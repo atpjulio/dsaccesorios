@@ -5,8 +5,18 @@ $myConstants = [
         'testing' => 'atpjulio@gmail.com',
         'admin' => 'arielcanario@hotmail.com'
     ],
-    'stylesVersion' => '1.000',
-    'productImages' => '/img/products/',
+    'noYes' => [
+        0 => 'No',
+        1 => 'Si',
+    ],
+    'yesNo' => [
+        1 => 'Si',
+        0 => 'No',
+    ],
+    'stylesVersion' => '1.001',
+    // 'productImage' => 'public/img/products',
+    'productImages' => 'public/img/products/',
+    'sliderImages' => '/img/slider/',
     'usersImages' => '/img/users/',
     'systemUser' => [
         'id' => 1,
@@ -85,8 +95,8 @@ $myConstants = [
         'email' => 'dsaccesorios365@gmail.com',
         'urlName' => 'dsaccesorios365',
         'longName' => 'DS Accesorios 365',
-        'description' => 'Plataforma de Mensajería Masiva vía WhatsApp',
-        'phoneNumber' => '+34 698119611',
+        'description' => 'Accesorios paras niñas los 365 días del año',
+        'phoneNumber' => '+57 3224375399',
         'logo' => env('APP_URL').'img/logo.png',
         'longLogo' => env('APP_URL').'img/logo_largo.png',
         'instagram' => 'https:/www.instagram.com/ds_accesorios365/',

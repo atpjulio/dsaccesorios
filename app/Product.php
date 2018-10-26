@@ -4,6 +4,7 @@ namespace App;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
+use Illuminate\Support\Facades\Storage;
 
 class Product extends Model
 {
@@ -15,10 +16,12 @@ class Product extends Model
         'description',
         'quantity',
         'picture',
+        'category_id',
         'purchases',
         'counter',
         'likes',
         'created_by',
+        'show',
     ];
 
     /**
@@ -27,4 +30,92 @@ class Product extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Relations
+     */
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
+    }
+    /**
+     * Methods
+     */
+    protected function storeRecord($request)
+    {
+        $product = new Product();
+
+        $product->name = $request->get('name');
+        $product->description = $request->get('description');
+        $product->price = floatval($request->get('price'));
+        $product->quantity = intval($request->get('quantity'));
+        $product->created_by = auth()->user()->id;
+        $product->show = $request->get('show');
+
+        if ($request->hasFile('picture')) {
+            $file = $request->file('picture');
+            $fileName = time().'_'.$file->getClientOriginalName();
+            $product->picture = Storage::put(config('constants.productImages'), $file);
+        }
+
+        $product->save();
+
+        return $product;
+    }
+
+    protected function updateRecord($request, $id)
+    {
+        $product = $this->find($id);
+
+        if (!$product) {
+            return $product;
+        }
+
+        $oldImage = $product->picture ?: null;
+
+        $product->name = $request->get('name');
+        $product->description = $request->get('description');
+        $product->price = floatval($request->get('price'));
+        $product->quantity = intval($request->get('quantity'));
+        $product->created_by = auth()->user()->id;
+        $product->show = $request->get('show');
+
+        if ($request->hasFile('picture')) {
+            $file = $request->file('picture');
+            $fileName = time().'_'.$file->getClientOriginalName();
+
+            Storage::delete($oldImage);
+
+            $product->picture = Storage::put(config('constants.productImages'), $file);
+        }
+
+        $product->save();
+
+        return $product;
+    }
+
+    protected function solds()
+    {
+        return $this->where('purchases', '>', 0)
+            ->get();
+    }
+
+    protected function likes()
+    {
+        return $this->where('likes', '>', 0)
+            ->get();
+    }
+
+    protected function getProductById($id)
+    {
+        return $this->where('id', $id)
+            ->first();
+    }
+
+    protected function getProductsByCategoryId($id)
+    {
+        return $this->where('category_id', $id)
+            ->get();
+    }
+
 }

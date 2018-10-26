@@ -71,4 +71,22 @@ class User extends Authenticatable
     {
         return $this->hasOne(Phone::class, 'user_id');
     }
+
+    public function orders()
+    {
+        return $this->hasMany(Order::class);
+    }
+
+    protected function updateProfile($request)
+    {
+        $user = $this->find(auth()->user()->id);
+
+        if ($user) {
+            $user->password = bcrypt($request->get('password'));
+            $user->save();
+        }
+
+        return $user;
+    }
+
 }

@@ -46,6 +46,17 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Exception $exception)
     {
+        $class = get_class($exception);
+        if ($class == 'Illuminate\Auth\AuthenticationException') {
+            return redirect()->to("/");
+        }
+
+        if ($class == 'Symfony\Component\HttpKernel\Exception\NotFoundHttpException') {
+            if (auth()->check()) {
+                return redirect()->to("/home");                
+            }
+            return redirect()->to("/")->with('message_danger', 'Página inválida - 404');
+        }
         return parent::render($request, $exception);
     }
 }

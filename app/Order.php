@@ -46,4 +46,61 @@ class Order extends Model
      * @var array
      */
     protected $dates = ['deleted_at'];
+
+    /**
+     * Relations
+     */     
+    public function user()
+    {
+        return $this->belongsTo(User::class);
+    }
+
+    /**
+     * Dynamic attributes
+     */     
+    public function getNumberAttribute()
+    {
+        return sprintf("%09d", $this->id);
+    }
+
+    public function getCreatedAtFormattedAttribute()
+    {
+        return \Carbon\Carbon::parse($this->created_at)->format("d/m/Y");
+    }
+
+    /**
+     * Methods
+     */     
+    protected function getOrdersByUserId($id)
+    {
+        return $this->where('user_id', $id)
+            ->get();
+    }
+
+    protected function storeRecord($shoppingCart)
+    {
+        $order = new Order();
+
+        $order->user_id = auth()->user()->id;
+        $order->products = json_encode($shoppingCart);
+        $order->sub_total = 0;
+
+        foreach ($shoppingCart as $key => $productArray) {
+            $product = Product::getProductById(key($productArray));
+            if (!$product) {
+                break;
+            }
+            $order->sub_total += $product->price * reset($productArray);
+        }
+
+        // TODO: Update product inventory
+
+        $order->shipping = 10000;
+        $order->total = $order->sub_total + $order->shipping;
+        $order->status = config('constants.transactions.frontEnd')[0];
+
+        $order->save();
+
+        return $order;
+    }
 }

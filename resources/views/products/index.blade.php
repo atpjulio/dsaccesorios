@@ -26,68 +26,41 @@
                         <div class="card-title-block">
                             <h3 class="title"> Productos registrados en el sistema </h3>
                         </div>
-                        <div class="col-xs-12">
-                            <div class="table-responsive">
-                                <table class="table table-striped table-bordered table-condensed table-hover" id="myTable">
-                                    <thead>
-                                    <th style="width: 60px;">Imagen</th>
-                                    <th class="">Nombre</th>
-                                    <th style="width: 60px;">Disponibles</th>
-                                    <th style="width: 60px;">Vendidos</th>
-                                    <th style="width: 15%;">Opciones</th>
-                                    </thead>
-                                    <tbody>
-                                    <tr>
-                                        <td>
-                                            <img src="{{ asset('img/products/default.jpg') }}" alt="" class="rounded" width="50">
-                                        </td>
-                                        <td>Producto número 1</td>
-                                        <td>14</td>
-                                        <td>2</td>
-                                        <td>
-                                            <a href="#" class="btn btn-pill-left btn-info btn-sm">
-                                                Editar
-                                            </a>
-                                            <a href="#" class="btn btn-pill-right btn-danger btn-sm">
-                                                Borrar
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="{{ asset('img/products/test1.jpg') }}" alt="" class="rounded" width="50">
-                                        </td>
-                                        <td>Bolso</td>
-                                        <td>7</td>
-                                        <td>9</td>
-                                        <td>
-                                            <a href="#" class="btn btn-pill-left btn-info btn-sm">
-                                                Editar
-                                            </a>
-                                            <a href="#" class="btn btn-pill-right btn-danger btn-sm">
-                                                Borrar
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            <img src="{{ asset('img/products/test2.jpg') }}" alt="" class="rounded" width="50">
-                                        </td>
-                                        <td>Bolso</td>
-                                        <td>7</td>
-                                        <td>9</td>
-                                        <td>
-                                            <a href="#" class="btn btn-pill-left btn-info btn-sm">
-                                                Editar
-                                            </a>
-                                            <a href="#" class="btn btn-pill-right btn-danger btn-sm">
-                                                Borrar
-                                            </a>
-                                        </td>
-                                    </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+                        <div class="table-responsive">
+                            <table class="table table-striped table-bordered table-condensed table-hover" id="myTable">
+                                <thead>
+                                <th style="width: 50px;">Imagen</th>
+                                <th class="">Nombre</th>
+                                <th style="width: 60px;">Disponibles</th>
+                                <th style="width: 60px;">Vendidos</th>
+                                <th style="width: 103px;">Opciones</th>
+                                </thead>
+                                <tbody>
+                                @if(count($products) > 0)
+                                @foreach($products as $product)
+                                <tr>
+                                    <td class="text-center">
+                                        <img src="{{ Storage::url($product->picture) }}" alt="" class="rounded" width="50">
+                                    </td>
+                                    <td>{!! $product->description !!}</td>
+                                    <td class="text-center">{!! $product->quantity !!}</td>
+                                    <td class="text-center">{!! $product->counter !!}</td>
+                                    <td>
+                                    @role('admin')
+                                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-pill-left btn-info btn-sm">
+                                            Editar
+                                        </a>
+                                        <a href="" data-toggle="modal" data-target="#confirm-modal-{{ $product->id }}" class="btn btn-pill-right btn-danger btn-sm">
+                                            Borrar
+                                        </a>
+                                    @endrole                                            
+                                    </td>
+                                </tr>
+                                @include('products.delete_modal')
+                                @endforeach
+                                @endif
+                                </tbody>
+                            </table>
                         </div>
                     </div>
                 </div>
@@ -115,7 +88,8 @@
                         "next":       "Siguiente",
                         "previous":   "Anterior"
                     }
-                }
+                },
+                "order": [[1, "asc"]]
             });
         } );
     </script>

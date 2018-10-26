@@ -3,6 +3,10 @@ $pink: #EB899B;
 $palidPink: #E5BEB8;
 $grey: #57565E;//#505A6A;
 
+.custom-file-input:lang(es)~.custom-file-label:after{
+  content:"Examinar" !important;
+}
+
 .resaltado-pink {
   background-color: $pink;
   -webkit-border-radius: 8px;
@@ -56,7 +60,7 @@ $grey: #57565E;//#505A6A;
 }
 
 .productos-fondo-imagen {
-  background-image: url("/img/ImagenFondo producto.png");
+  background-image: url("/img/fondoProducto.png");
   min-height: 180px;
   margin-top: 20px;
   a {
@@ -67,7 +71,8 @@ $grey: #57565E;//#505A6A;
 .productos-color-texto {
   background-color: $palidPink;
   color: $green;
-  margin-top: 26%;
+  padding-left: 15px;
+  padding-right: 15px;
   h1 {
     padding-top: 1px;
   }
@@ -76,11 +81,32 @@ $grey: #57565E;//#505A6A;
 .productos-imagen-texto {
   background-color: $grey;
   color: $palidPink;
-  margin-top: 26%;
+  padding-left: 15px;
+  padding-right: 15px;
+  
   h1 {
     padding-top: 1px;
   }
 }
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .productos-color-texto {
+    h1 {
+      font-size: 1.95rem !important;
+    }
+  }
+  .productos-imagen-texto {
+    h1 {
+      font-size: 1.95rem !important;
+    }
+  }
+}
+@media only screen and (min-width: 426px) and (max-width: 767px) {
+}
+@media only screen and (max-width: 425px) {
+}
+
+
 
 .texto-slider {
   background-color: $pink;
@@ -91,19 +117,55 @@ $grey: #57565E;//#505A6A;
 
 .tienda-fondo-color {
   background-color: $green;
-  min-height: 320px;
+  height: 320px;
   padding-left: 15px;
   padding-right: 15px;
+  margin-bottom: 10px;
   h1 {
     background-color: $palidPink;
     color: $green;
   }
+  @media only screen and (min-width: 768px) {
+    .category-all {
+      margin-top: 40%;
+    }
+  }
+  @media only screen and (min-width: 481px) and (max-width: 767px) {
+    .category-all {
+      margin-top: 27%;
+    }
+  }
+  @media only screen and (max-width: 480px) {
+    .category-all {
+      margin-top: 36%;
+    }
+  }
 }
 
 .quienes-fondo-imagen {
-  //background-image: url("/img/imagen contacto.png");
-  //background-size: contain;
+  /*background-color: $green;*/
+  min-height: 255px;
+  background-image: url("/img/fondoProducto.png");
+  background-size: cover;
   //max-height: 20px;
+}
+
+.trabaja-imagen-texto {
+  background-color: $grey;
+  color: $palidPink;
+  //margin-top: 30%;
+  h1 {
+    padding-top: 1px;
+  }
+}
+
+.contacto-imagen-texto {
+  background-color: $grey;
+  color: $palidPink;
+  margin-top: 40%;
+  h1 {
+    padding-top: 1px;
+  }
 }
 
 .nav-item {
@@ -113,4 +175,19 @@ $grey: #57565E;//#505A6A;
   a.tab-link.active {
     color: $grey !important;
   }
+}
+
+.card.card-pink > .card-header {
+    background-color: $pink;
+    border-color: $pink;
+    .title {
+      color: white;
+    }
+}
+
+.card.card-pink {
+  a:hover {
+    color: $pink;
+  }
+
 }

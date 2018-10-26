@@ -18,5 +18,6 @@
             <a href="{{ route('welcome') }}" class="btn btn-secondary">Ir al inicio</a>
         </div>
     </div>
+    <hr>
     <br>
 @endsection

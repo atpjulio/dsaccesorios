@@ -19,6 +19,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'Lentes para la nieve cuando salgas a esquiar en cualquier rincón de Barranquilla',
                 'quantity' => 4,
                 'picture' => config('constants.productImages').'test1.jpg',
+                'category_id' => 6,
             ],
             [
                 'price' => 120000,
@@ -26,6 +27,7 @@ class ProductsTableSeeder extends Seeder
                 'description' => 'Reloj espectacular para dama, sirve para momentos especiales donde necesitas saber la hora',
                 'quantity' => 13,
                 'picture' => config('constants.productImages').'test2.jpg',
+                'category_id' => 6,
             ],
         ];
 

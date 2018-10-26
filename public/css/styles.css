@@ -1,81 +1,184 @@
+.custom-file-input:lang(es) ~ .custom-file-label:after {
+  content: "Examinar" !important;
+}
+
 .resaltado-pink {
   background-color: #EB899B;
-  -webkit-border-radius: 8px;
-  -moz-border-radius: 8px;
   border-radius: 8px;
-  margin-bottom: 20px; }
-  .resaltado-pink h2, .resaltado-pink a {
-    color: #57565E;
-    font-weight: bolder; }
-  .resaltado-pink h5, .resaltado-pink a {
-    color: #57565E;
-    font-weight: bolder; }
+  margin-bottom: 20px;
+}
+
+.resaltado-pink h2,
+.resaltado-pink a {
+  color: #57565E;
+  font-weight: bolder;
+}
+
+.resaltado-pink h5,
+.resaltado-pink a {
+  color: #57565E;
+  font-weight: bolder;
+}
 
 .footer-bottom {
   margin-top: 8px;
-  margin-bottom: 30px; }
+  margin-bottom: 30px;
+}
 
 .social-icons a {
   color: #57565E;
   font-weight: bolder;
-  font-size: 20px; }
+  font-size: 20px;
+}
 
 .navbar-light .navbar-nav .nav-link {
   font-size: 20px !important;
-  padding-right: 30px; }
+  padding-right: 30px;
+}
 
 .custom-hr {
   border-width: 5px;
-  border-color: #57565E; }
+  border-color: #57565E;
+}
 
 .productos-fondo-color {
   background-color: #00A39B;
   min-height: 180px;
-  margin-top: 20px; }
-  .productos-fondo-color h1 {
-    padding-top: 15%; }
-  .productos-fondo-color a {
-    text-decoration: none; }
+  margin-top: 20px;
+}
+
+.productos-fondo-color h1 {
+  padding-top: 15%;
+}
+
+.productos-fondo-color a {
+  text-decoration: none;
+}
 
 .productos-fondo-imagen {
-  background-image: url("/img/ImagenFondo producto.png");
+  background-image: url("/img/fondoProducto.png");
   min-height: 180px;
-  margin-top: 20px; }
-  .productos-fondo-imagen a {
-    text-decoration: none; }
+  margin-top: 20px;
+}
+
+.productos-fondo-imagen a {
+  text-decoration: none;
+}
 
 .productos-color-texto {
   background-color: #E5BEB8;
   color: #00A39B;
-  margin-top: 26%; }
-  .productos-color-texto h1 {
-    padding-top: 1px; }
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.productos-color-texto h1 {
+  padding-top: 1px;
+}
 
 .productos-imagen-texto {
   background-color: #57565E;
   color: #E5BEB8;
-  margin-top: 26%; }
+  padding-left: 15px;
+  padding-right: 15px;
+}
+
+.productos-imagen-texto h1 {
+  padding-top: 1px;
+}
+
+@media only screen and (min-width: 768px) and (max-width: 1023px) {
+  .productos-color-texto h1 {
+    font-size: 1.95rem !important;
+  }
+
   .productos-imagen-texto h1 {
-    padding-top: 1px; }
+    font-size: 1.95rem !important;
+  }
+}
 
 .texto-slider {
   background-color: #EB899B;
   color: #57565E;
   margin-top: 32%;
-  text-transform: uppercase; }
+  text-transform: uppercase;
+}
 
 .tienda-fondo-color {
   background-color: #00A39B;
-  min-height: 320px;
+  height: 320px;
   padding-left: 15px;
-  padding-right: 15px; }
-  .tienda-fondo-color h1 {
-    background-color: #E5BEB8;
-    color: #00A39B; }
+  padding-right: 15px;
+  margin-bottom: 10px;
+}
+
+.tienda-fondo-color h1 {
+  background-color: #E5BEB8;
+  color: #00A39B;
+}
+
+@media only screen and (min-width: 768px) {
+  .tienda-fondo-color .category-all {
+    margin-top: 40%;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .tienda-fondo-color .category-all {
+    margin-top: 27%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .tienda-fondo-color .category-all {
+    margin-top: 36%;
+  }
+}
+
+.quienes-fondo-imagen {
+  /*background-color: $green;*/
+  min-height: 255px;
+  background-image: url("/img/fondoProducto.png");
+  background-size: cover;
+}
+
+.trabaja-imagen-texto {
+  background-color: #57565E;
+  color: #E5BEB8;
+}
+
+.trabaja-imagen-texto h1 {
+  padding-top: 1px;
+}
+
+.contacto-imagen-texto {
+  background-color: #57565E;
+  color: #E5BEB8;
+  margin-top: 40%;
+}
+
+.contacto-imagen-texto h1 {
+  padding-top: 1px;
+}
 
 .nav-item a.tab-link {
-  color: #00A39B !important; }
-.nav-item a.tab-link.active {
-  color: #57565E !important; }
+  color: #00A39B !important;
+}
 
-/*# sourceMappingURL=styles.css.map */
+.nav-item a.tab-link.active {
+  color: #57565E !important;
+}
+
+.card.card-pink > .card-header {
+  background-color: #EB899B;
+  border-color: #EB899B;
+}
+
+.card.card-pink > .card-header .title {
+  color: white;
+}
+
+.card.card-pink a:hover {
+  color: #EB899B;
+}
+

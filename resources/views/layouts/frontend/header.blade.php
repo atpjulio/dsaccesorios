@@ -23,14 +23,34 @@
             <li class="nav-item @if(Request::is('contactus')) active @endif">
                 <a class="nav-link" href="{{ route('contactus') }}">Contacto</a>
             </li>
+            <li class="nav-item @if(Request::is('work')) active @endif">
+                <a class="nav-link" href="{{ route('work') }}">Trabaja con Nosotros</a>
+            </li>
             <li class="nav-item">
                 <a class="nav-link" href="" data-toggle="modal" data-target="#exampleModal">Suscribirse</a>
             </li>
         </ul>
         <form class="form-inline mt-2 mt-md-0">
+            @guest
+            <a class="btn btn-outline-secondary my-2 my-sm-0" href="{{ route('login') }}">
+                <i class="fas fa-user"></i>
+                Ingresar
+            </a>
+            &nbsp;&nbsp;
+            @endguest
+            @auth
+            <a class="btn btn-outline-secondary my-2 my-sm-0" href="{{ route('home') }}">
+                <i class="fa fa-home"></i>
+                Home
+            </a>
+            &nbsp;&nbsp;
+            @endauth
             <a class="btn btn-outline-secondary my-2 my-sm-0" href="{{ route('cart') }}">
-                <img src="{{ asset('img/iconocompra.png') }}" height="20">
-                Carrito
+                <i class="fas fa-shopping-cart"></i>
+                Carrito 
+                @if (is_array(session('shoppingCart')) and count(session('shoppingCart')) > 0)
+                    ({!! count(session('shoppingCart')) !!})
+                @endif
             </a>
         </form>
     </div>

@@ -12,11 +12,13 @@
 
     <link rel="apple-touch-icon" href="apple-touch-icon.png">
     <!-- Place favicon.ico in the root directory -->
-
+    <link rel="stylesheet" href="{{ asset('css/app.css') }}">
     <link rel="stylesheet" href="{{ asset('modular-admin/css/vendor.css') }}">
     <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/regular.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/solid.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version={{ config('constants.stylesVersion') }}">
+    <link rel="icon" href="{{ asset('img/favicon.png') }}">
 
     <!-- Theme initialization -->
     <script>
@@ -68,8 +70,10 @@
 
     </script>
     --}}
+    @include('layouts.backend.modals')
     <script src="{{ asset('modular-admin/js/vendor.js') }}"></script>
     <script src="{{ asset('modular-admin/js/app.js') }}"></script>
+    <script src="{{ asset('js/global.js') }}"></script>
     @stack('scripts')
 </body>
 </html>

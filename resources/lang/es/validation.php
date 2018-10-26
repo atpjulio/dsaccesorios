@@ -113,8 +113,8 @@ return [
         'email' => [
             'unique' => 'Ese correo electrónico ya se encuentra registrado en el sistema'
         ],
-        'name' => [
-            'unique' => 'Ese nombre de campaña ya se encuentra registrado en el sistema'
+        'terms_and_conditions' => [
+            'required' => 'Por favor acepta los términos y condiciones para continuar'
         ],
         'items.*' => [
             'required' => 'Por favor llene los campos vacíos en las características del plan'
@@ -131,16 +131,20 @@ return [
     |
     */
     'attributes' => [
-        'rate' => 'tasa',
+        'description' => 'descripción',
         'password' => 'contraseña',
         'phone' => 'celular',
         'first_name' => 'nombres',
         'last_name' => 'apellidos',
-        'excel_file' => 'archivo de excel',
-        'name' => 'nombre de la campaña',
+        'image' => 'imagen',
+        'picture' => 'imagen',
+        'name' => 'nombre',
         'message' => 'mensaje',
-        'plan_id' => 'plan',
-        'plan_type' => 'tipo de plan',
-        'price' => 'monto',
+        'category_id' => 'tipo de categoría',
+        'quantity' => 'cantidad',
+        'price' => 'precio',
+        'address' => 'dirección',
+        'city' => 'municipio',
+        'terms_and_conditions' => 'términos y condiciones'
     ],
 ];

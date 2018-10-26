@@ -25,6 +25,7 @@ class CreateProductsTable extends Migration
             $table->unsignedInteger('counter')->default(0);   // Quantity that has been purchased
             $table->unsignedInteger('likes')->default(0);
             $table->unsignedInteger('created_by')->default(1);
+            $table->boolean('show')->default(1);
             $table->timestamps();
             $table->softDeletes();
         });

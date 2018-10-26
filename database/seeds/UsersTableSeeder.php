@@ -22,19 +22,26 @@ class UsersTableSeeder extends Seeder
                 'user_type' => config('constants.userRoles.admin'),
             ],
             [
+                'first_name' => 'Julio',
+                'last_name' => 'Amaya',
+                'email' => 'atpjulio@yahoo.es',
+                'password' => bcrypt('Lucy.2018'),
+                'user_type' => config('constants.userRoles.admin'),
+            ],
+            [
+                'first_name' => 'Aura',
+                'last_name' => 'Morales',
+                'email' => 'aura18425@gmail.com',
+                'password' => bcrypt('123456'),
+                'user_type' => config('constants.userRoles.user'),
+            ],
+            [
                 'first_name' => 'Usuario',
                 'last_name' => 'Número 1',
                 'email' => 'usuario1@dsaccesorios365.com',
                 'password' => bcrypt('123456'),
                 'user_type' => config('constants.userRoles.user'),
             ],
-            [
-                'first_name' => 'Usuario',
-                'last_name' => 'Número 2',
-                'email' => 'usuario2@dsaccesorios365.com',
-                'password' => bcrypt('123456'),
-                'user_type' => config('constants.userRoles.user'),
-            ]
         ];
 
         foreach ($initialUsers as $currentUser) {

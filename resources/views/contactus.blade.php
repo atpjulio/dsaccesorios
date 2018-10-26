@@ -1,38 +1,42 @@
 @extends('layouts.frontend.template')
 
 @section('content')
-    <div class="row">
-        <div class="col-md-5">
-            <div class="quienes-fondo-imagen">
-                <div class="row">
-                    <div class="col-3"></div>
-                    <div class="col-6">
-                        <div class="text-center">
-                            <div class="productos-imagen-texto">
-                                <h1>Contáctanos</h1>
-                            </div>
-                        </div>
-                    </div>
-                    <div class="col-3"></div>
+<div class="container">
+     <div class="row align-items-center">
+        <div class="col-md-6 text-center">
+            <div class="quienes-fondo-imagen d-flex align-items-center justify-content-center">
+                <div class="productos-imagen-texto">
+                    <h1>Contáctanos</h1>
                 </div>
             </div>
         </div>
-        <div class="col-md-5">
-            <h2 style="font-style: italic;">
-                Trabaja con nosotros
-            </h2>
+        <div class="col-md-6">
+            <div class="d-none d-sm-none d-md-block">
+                <h2>
+                    Encuéntranos en las redes sociales, es la mejor manera de que conozcas nuestro trabajo
+                </h2>
+            </div>
+            <div class="d-block d-sm-block d-md-none">
+                <br>
+                <h4>
+                    Encuéntranos en las redes sociales, es la mejor manera de que conozcas nuestro trabajo
+                </h4>                
+            </div>
+            
             <br>
-            <h4 style="font-style: italic;">
-                ¿ Quieres ser parte de DS Accesorios 365 ? <br><br>
-                Agradecemos tu interés por formar parte de nuestra tienda. Organiza tu propio negocio a través de nuestros productos modernos e innovadores
-                <br><br>
-                Escríbenos a <a href="mailto:dsaccesosios365@gmail.com">dsaccesosios365@gmail.com</a>
+            <h4>
+                Escríbenos a <a href="mailto:{{ config('constants.companyInfo.email') }}">{{ config('constants.companyInfo.email') }}</a>
             </h4>
-            <br>
-            <h2 style="font-style: italic;">
-                Encuéntranos en las redes sociales, es la mejor manera de que conozcas nuestro trabajo
-            </h2>
+            <h4>
+                Síguenos en Instagram <a href="{{ config('constants.companyInfo.instagram') }}" target="_blank"><i class="fab fa-instagram"></i></a>
+
+            </h4>
+            <h4>
+                Visítanos en Facebook <a href="{{ config('constants.companyInfo.facebook') }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
+            </h4>
         </div>
     </div>
     <br>
+    
+</div>
 @endsection
