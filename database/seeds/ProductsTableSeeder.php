@@ -1,5 +1,6 @@
 <?php
 
+use App\Category;
 use App\Product;
 use Illuminate\Database\Seeder;
 
@@ -12,6 +13,18 @@ class ProductsTableSeeder extends Seeder
      */
     public function run()
     {
+        $data = [
+            ['name' => 'Lazos'],
+            ['name' => 'Vinchas'],
+            ['name' => 'Cintillos'],
+            ['name' => 'Carteras'],
+            ['name' => 'Sandalias'],
+            ['name' => 'Maricaditas'],
+        ];
+
+        foreach ($data as $value) {
+            Category::insert($value);
+        }
         $initialProducts = [
             [
                 'price' => 20000,
