@@ -2,6 +2,7 @@
 
 use App\Category;
 use App\Product;
+use App\SliderImage;
 use Illuminate\Database\Seeder;
 
 class ProductsTableSeeder extends Seeder
@@ -46,6 +47,26 @@ class ProductsTableSeeder extends Seeder
 
         foreach ($initialProducts as $product) {
             Product::create($product);
+        }
+         $data = [
+            [
+                'text' => 'Nueva Colección',
+                'url' => config('constants.sliderImages').'foto.png',
+                'status' => config('constants.status.active'),
+            ],
+            [
+                'url' => config('constants.sliderImages').'cartera1.jpg',
+                'status' => config('constants.status.active'),
+            ],
+            [
+                'url' => config('constants.sliderImages').'cartera2.jpg',
+                'status' => config('constants.status.active'),
+            ],
+
+        ];
+
+        foreach ($data as $value) {
+            SliderImage::insert($value);
         }
     }
 }
