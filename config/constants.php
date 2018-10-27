@@ -13,7 +13,7 @@ $myConstants = [
         1 => 'Si',
         0 => 'No',
     ],
-    'stylesVersion' => '1.001',
+    'stylesVersion' => '1.002',
     // 'productImage' => 'public/img/products',
     'productImages' => 'public/img/products/',
     'sliderImages' => '/img/slider/',

@@ -3,6 +3,8 @@
 @section('content')
     <div class="container">
         @if (count($sliderImages) > 0)
+        <div class="row justify-content-center">
+            
         <div id="carouselExampleIndicators" class="carousel slide w-75" data-ride="carousel">
             <ol class="carousel-indicators">
             @foreach ($sliderImages as $key => $val)
@@ -40,6 +42,7 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="sr-only">Next</span>
             </a>
+        </div>
         </div>
         @endif
     </div>
