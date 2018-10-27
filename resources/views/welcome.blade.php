@@ -3,7 +3,7 @@
 @section('content')
     <div class="container">
         @if (count($sliderImages) > 0)
-        <div id="carouselExampleIndicators" class="carousel slide" data-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide w-75" data-ride="carousel">
             <ol class="carousel-indicators">
             @foreach ($sliderImages as $key => $val)
                 <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}" 
@@ -13,7 +13,7 @@
             <div class="carousel-inner">
                 @foreach ($sliderImages as $key => $sliderImage)
                 <div class="carousel-item @if ($key == 0) active @endif">
-                    <img class="d-block w-75" src="{{ asset($sliderImage->url) }}" style="max-height: 580px;">
+                    <img class="d-block" src="{{ asset($sliderImage->url) }}" style="max-height: 580px;">
                     @if ($sliderImage->text)
                     <div class="carousel-caption d-none d-md-block">
                         <div class="row">
