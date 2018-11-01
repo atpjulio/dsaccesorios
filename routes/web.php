@@ -15,7 +15,22 @@ Route::view('/work', 'work')->name('work');
 Route::view('/contactus', 'contactus')->name('contactus');
 Route::view('/who-are-we', 'who-are-we')->name('who.are.we');
 Route::view('/terms-and-conditions', 'terms_and_conditions')->name('tac');
+/*
+Route::get('enviar', ['as' => 'enviar', function () {
 
+    $data = ['link' => 'http://styde.net'];
+
+    \Mail::send('emails.notificacion', $data, function ($message) {
+
+        $message->from('email@styde.net', 'Styde.Net');
+
+        $message->to('user@example.com')->subject('Notificación');
+
+    });
+
+    return "Se envío el email";
+}]);
+*/
 Route::post('/pay-cart', 'FrontEndController@payCart')->name('pay.cart');
 Route::get('/pay-cart-confirm', 'FrontEndController@payCartConfirm')->name('pay.cart.confirm');
 Route::post('/pay-cart-process', 'FrontEndController@payCartProcess')->name('pay.cart.process');
