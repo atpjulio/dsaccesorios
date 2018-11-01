@@ -14,7 +14,7 @@
             <div class="carousel-inner">
                 @foreach ($sliderImages as $key => $sliderImage)
                 <div class="carousel-item justify-content-center @if ($key == 0) active @endif">
-                    <img class="d-block" src="{{ asset($sliderImage->url) }}" style="max-height: 580px;">
+                    <img class="d-block w-100" src="{{ asset($sliderImage->url) }}" style="max-height: 580px;">
                     @if ($sliderImage->text)
                     <div class="carousel-caption d-none d-md-block">
                         <div class="row">
