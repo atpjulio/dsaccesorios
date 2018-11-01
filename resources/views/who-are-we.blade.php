@@ -13,13 +13,13 @@
         <div class="col-md-6">
             <div class="d-none d-sm-none d-md-block">
                 <h2>
-                    Somos una empresa dedicada a la elaboración de accesorios para las princesas de la casa, donde encontrarás el complemento perfecto hecho con amor los 365 días del año para que tus princesas luzcan radiantes y modernas en cada ocasión
+                    Somos una empresa dedicada a la elaboración de accesorios para las princesas de la casa, donde encontrarás el accesorio adecuado hecho con amor los 365 días del año para que tus princesas luzcan radiantes y modernas en cada ocasión
                 </h2>
             </div>
             <div class="d-block d-sm-block d-md-none">
                 <br>
                 <h4>
-                    Somos una empresa dedicada a la elaboración de accesorios para las princesas de la casa, donde encontrarás el complemento perfecto hecho con amor los 365 días del año para que tus princesas luzcan radiantes y modernas en cada ocasión
+                    Somos una empresa dedicada a la elaboración de accesorios para las princesas de la casa, donde encontrarás el accesorio adecuado hecho con amor los 365 días del año para que tus princesas luzcan radiantes y modernas en cada ocasión
                 </h4>                
             </div>
         </div>
