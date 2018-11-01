@@ -27,6 +27,9 @@
                 <a class="nav-link" href="{{ route('work') }}">Trabaja con Nosotros</a>
             </li>
             <li class="nav-item">
+                <a class="nav-link" href="http://www.enviacolvanes.com.co" target="_blank">Rastrea tu Envío</a>
+            </li>
+            <li class="nav-item">
                 <a class="nav-link" href="" data-toggle="modal" data-target="#exampleModal">Suscribirse</a>
             </li>
         </ul>
