@@ -185,12 +185,14 @@
 @media only screen and (min-width: 768px) {
   .welcome-slider {
     width: 80%;
+    margin: auto;
   }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 767px) {
   .welcome-slider {
     width: 90%;
+    margin: auto;
   }
 }
 
