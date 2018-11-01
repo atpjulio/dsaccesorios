@@ -184,21 +184,21 @@
 
 @media only screen and (min-width: 768px) {
   .welcome-slider {
-    width: 80%;
+    width: 80% !important;
     margin: auto;
   }
 }
 
 @media only screen and (min-width: 481px) and (max-width: 767px) {
   .welcome-slider {
-    width: 90%;
+    width: 90% !important;
     margin: auto;
   }
 }
 
 @media only screen and (max-width: 480px) {
   .welcome-slider {
-    width: 100%;
+    width: 100% !important;
   }
 }
 

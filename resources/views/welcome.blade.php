@@ -4,7 +4,6 @@
     <div class="container">
         @if (count($sliderImages) > 0)
         <div class="row justify-content-center">
-            
         <div id="carouselExampleIndicators" class="carousel slide welcome-slider" data-ride="carousel">
             <ol class="carousel-indicators">
             @foreach ($sliderImages as $key => $val)
@@ -14,7 +13,7 @@
             </ol>
             <div class="carousel-inner">
                 @foreach ($sliderImages as $key => $sliderImage)
-                <div class="carousel-item @if ($key == 0) active @endif">
+                <div class="carousel-item justify-content-center @if ($key == 0) active @endif">
                     <img class="d-block" src="{{ asset($sliderImage->url) }}" style="max-height: 580px;">
                     @if ($sliderImage->text)
                     <div class="carousel-caption d-none d-md-block">
