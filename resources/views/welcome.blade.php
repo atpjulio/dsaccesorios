@@ -5,7 +5,7 @@
         @if (count($sliderImages) > 0)
         <div class="row justify-content-center">
             
-        <div id="carouselExampleIndicators" class="carousel slide w-75" data-ride="carousel">
+        <div id="carouselExampleIndicators" class="carousel slide welcome-slider" data-ride="carousel">
             <ol class="carousel-indicators">
             @foreach ($sliderImages as $key => $val)
                 <li data-target="#carouselExampleIndicators" data-slide-to="{{ $key }}" 

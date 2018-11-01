@@ -182,3 +182,21 @@
   color: #EB899B;
 }
 
+@media only screen and (min-width: 768px) {
+  .welcome-slider {
+    width: 80%;
+  }
+}
+
+@media only screen and (min-width: 481px) and (max-width: 767px) {
+  .welcome-slider {
+    width: 90%;
+  }
+}
+
+@media only screen and (max-width: 480px) {
+  .welcome-slider {
+    width: 100%;
+  }
+}
+
