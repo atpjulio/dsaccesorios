@@ -100,7 +100,7 @@ $myConstants = [
         'logo' => env('APP_URL').'img/logo.png',
         'longLogo' => env('APP_URL').'img/logo_largo.png',
         'instagram' => 'https:/www.instagram.com/ds_accesorios365/',
-        'facebook' => 'https:/www.facebook.com/',
+        'facebook' => 'https://www.facebook.com/Ds-Accesorios-365-267715884086489/',
     ],
     'signature' => [
         'notification' => " \n\n**Mensaje generado automáticamente. GestionAutoMessage**",
