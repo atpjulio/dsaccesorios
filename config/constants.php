@@ -92,7 +92,7 @@ $myConstants = [
     ],
     'companyInfo' => [
         'name' => 'DS Accesorios 365',
-        'email' => 'dsaccesorios365@gmail.com',
+        'email' => 'dsaccesorios@outlook.es',
         'urlName' => 'dsaccesorios365',
         'longName' => 'DS Accesorios 365',
         'description' => 'Accesorios paras niñas los 365 días del año',
@@ -100,7 +100,9 @@ $myConstants = [
         'logo' => env('APP_URL').'img/logo.png',
         'longLogo' => env('APP_URL').'img/logo_largo.png',
         'instagram' => 'https:/www.instagram.com/ds_accesorios365/',
-        'facebook' => 'https://www.facebook.com/Ds-Accesorios-365-267715884086489/',
+        'facebook' => 'https://www.facebook.com/Ds_accesorios365-2177333129215442/',
+        'nit' => '1102810296-1',
+        'address' => 'Calle 25 #24 - 65 Casa 11'
     ],
     'signature' => [
         'notification' => " \n\n**Mensaje generado automáticamente. GestionAutoMessage**",
