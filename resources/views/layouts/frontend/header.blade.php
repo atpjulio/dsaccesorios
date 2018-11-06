@@ -35,20 +35,20 @@
         </ul>
         <form class="form-inline mt-2 mt-md-0">
             @guest
-            <a class="btn btn-outline-secondary my-2 my-sm-0" href="{{ route('login') }}">
+            <a class="btn btn-sm btn-outline-secondary my-2 my-sm-0" href="{{ route('login') }}">
                 <i class="fas fa-user"></i>
                 Ingresar
             </a>
             &nbsp;&nbsp;
             @endguest
             @auth
-            <a class="btn btn-outline-secondary my-2 my-sm-0" href="{{ route('home') }}">
+            <a class="btn btn-sm btn-outline-secondary my-2 my-sm-0" href="{{ route('home') }}">
                 <i class="fa fa-home"></i>
                 Home
             </a>
             &nbsp;&nbsp;
             @endauth
-            <a class="btn btn-outline-secondary my-2 my-sm-0" href="{{ route('cart') }}">
+            <a class="btn btn-sm btn-outline-secondary my-2 my-sm-0" href="{{ route('cart') }}">
                 <i class="fas fa-shopping-cart"></i>
                 Carrito 
                 @if (is_array(session('shoppingCart')) and count(session('shoppingCart')) > 0)

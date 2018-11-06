@@ -9,6 +9,7 @@ use App\Order;
 use App\Product;
 use App\SliderImage;
 use App\Subscription;
+use App\Utilities;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -154,6 +155,15 @@ class FrontEndController extends Controller
     public function subscribe(StoreSubscriberRequest $request)
     {
         Subscription::storeRecord($request);
+
+        $user['email'] = $request->get('email');
+        $user['first_name'] = $user['last_name'] = '';
+
+        $subject = 'Subscripción a '.env('APP_URL');
+        $url = env('APP_URL').'/register';
+        $content = 'Hola,<br><br>Gracias por suscribirte a nuestra página. A través de este canal te informaremos de manera oportuna acerca de ofertas, nuevas colecciones y descuentos<br><br>Trabajamos con mucho cariño y entusiasmo para brindar lo mejor a las princesas de la casa<br><br>Si deseas registrarte en nuestra página para que puedas hacer compras o recibir información adicional, haz clic en el siguiente enlace:<br><br>'.$url;
+
+        Utilities::sendEmail($user, $subject, $content);
 
         Session::flash('message', 'Gracias por suscribirte a '.config('constants.companyInfo.name'));
         return redirect()->back();

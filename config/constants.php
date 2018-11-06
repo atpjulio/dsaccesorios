@@ -3,7 +3,7 @@
 $myConstants = [
     'emails' => [
         'testing' => 'atpjulio@gmail.com',
-        'admin' => 'arielcanario@hotmail.com'
+        'admin' => 'dsaccesorios@outlook.com'
     ],
     'noYes' => [
         0 => 'No',
@@ -13,16 +13,16 @@ $myConstants = [
         1 => 'Si',
         0 => 'No',
     ],
-    'stylesVersion' => '1.004',
+    'stylesVersion' => '1.005',
     // 'productImage' => 'public/img/products',
     'productImages' => 'public/img/products/',
     'sliderImages' => '/img/slider/',
     'usersImages' => '/img/users/',
     'systemUser' => [
         'id' => 1,
-        'email' => 'arielcanario@hotmail.com',
-        'first_name' => 'Ariel',
-        'last_name' => 'Canario',
+        'email' => 'dsaccesorios@outlook.com',
+        'first_name' => 'Admin',
+        'last_name' => 'DS Accesorios',
     ],
     'userRoles' => [
         'user' => 1,
@@ -98,7 +98,7 @@ $myConstants = [
         'description' => 'Accesorios paras niñas los 365 días del año',
         'phoneNumber' => '+57 3224375399',
         'logo' => env('APP_URL').'img/logo.png',
-        'longLogo' => env('APP_URL').'img/logo_largo.png',
+        'longLogo' => 'http://dsaccesorios365.com/img/favicon.png',
         'instagram' => 'https:/www.instagram.com/ds_accesorios365/',
         'facebook' => 'https://www.facebook.com/Ds_accesorios365-2177333129215442/',
         'nit' => '1102810296-1',

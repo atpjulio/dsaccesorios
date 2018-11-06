@@ -1,5 +1,7 @@
 <?php
 
+use App\Utilities;
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -15,22 +17,20 @@ Route::view('/work', 'work')->name('work');
 Route::view('/contactus', 'contactus')->name('contactus');
 Route::view('/who-are-we', 'who-are-we')->name('who.are.we');
 Route::view('/terms-and-conditions', 'terms_and_conditions')->name('tac');
-/*
-Route::get('enviar', ['as' => 'enviar', function () {
 
-    $data = ['link' => 'http://styde.net'];
+Route::get('/enviar', ['as' => 'enviar', function () {
 
-    \Mail::send('emails.notificacion', $data, function ($message) {
+  $user['email'] = 'atpjulio@yahoo.es';
+  $user['first_name'] = 'Julián';
+  $user['last_name'] = 'Soler';
+  $subject = 'DS Accesorios';
+  $content = 'Primer correo electrónico';
 
-        $message->from('email@styde.net', 'Styde.Net');
+  Utilities::sendEmail($user, $subject, $content);
 
-        $message->to('user@example.com')->subject('Notificación');
-
-    });
-
-    return "Se envío el email";
+  return "Se envío el email";
 }]);
-*/
+
 Route::post('/pay-cart', 'FrontEndController@payCart')->name('pay.cart');
 Route::get('/pay-cart-confirm', 'FrontEndController@payCartConfirm')->name('pay.cart.confirm');
 Route::post('/pay-cart-process', 'FrontEndController@payCartProcess')->name('pay.cart.process');

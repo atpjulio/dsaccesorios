@@ -44,6 +44,7 @@
                             </div>
                         </div>
 
+                        {{-- 
                         <div class="form-group row">
                             <div class="col-md-6 offset-md-4">
                                 <div class="form-check">
@@ -55,19 +56,14 @@
                                 </div>
                             </div>
                         </div>
+                         --}}
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
                                 <button type="submit" class="btn btn-secondary">
                                     Entrar
                                 </button>
-                                {{-- 
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
-                                    Olvidaste tu contraseña
-                                </a>
-                                 --}}
-
-                                <a class="btn btn-link" href="#">
                                     Olvidaste tu contraseña
                                 </a>
                             </div>
