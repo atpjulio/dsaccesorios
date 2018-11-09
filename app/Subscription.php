@@ -35,4 +35,10 @@ class Subscription extends Model
 
     	return $subscription;
     }
+
+    protected function getActiveSubscribers()
+    {
+        return $this->where('status', config('constants.status.active'))
+            ->get();
+    }
 }

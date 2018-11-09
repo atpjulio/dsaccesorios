@@ -145,6 +145,9 @@ return [
         'price' => 'precio',
         'address' => 'dirección',
         'city' => 'municipio',
-        'terms_and_conditions' => 'términos y condiciones'
+        'terms_and_conditions' => 'términos y condiciones',
+        'title' => 'título',
+        'subject' => 'asunto',
+        'content' => 'content',
     ],
 ];

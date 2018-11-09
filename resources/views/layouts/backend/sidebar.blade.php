@@ -90,21 +90,19 @@
                         </li>
                     </ul>
                 </li>
-                <li class="@if(Request::is('subs*')) open active @endif">
+                <li class="@if(Request::is('subs*') or Request::is('bulletin*')) open active @endif">
                     <a href="">
                         <i class="fas fa-user-friends"></i> Subscripciones
                         <i class="fa arrow"></i>
                     </a>
-                    {{--
                     <ul class="sidebar-nav">
-                        <li class="@if(Request::is('slider/create')) active @endif" >
-                            <a href="{{ route('slider.create') }}">
-                                <i class="fa fa-plus"></i>&nbsp;
-                                Nueva imagen
+                        <li class="@if(Request::is('bulletin')) active @endif" >
+                            <a href="{{ route('bulletin.index') }}">
+                                <i class="far fa-newspaper"></i>&nbsp;
+                                Boletines
                             </a>
                         </li>
                     </ul>
-                    --}}
                     <ul class="sidebar-nav">
                         <li class="@if(Request::is('subscriptions')) active @endif" >
                             <a href="{{ route('subscription.index') }}">

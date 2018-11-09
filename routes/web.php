@@ -45,11 +45,13 @@ Route::get('/substract-from-cart', 'FrontEndController@substractFromCart')->name
 
 Route::middleware(['auth', 'admin'])->group(function () {
 	Route::resource('products', 'ProductController');
-  	Route::get('/products-solds', 'ProductController@solds')->name('products.solds');
-  	Route::get('/products-likes', 'ProductController@likes')->name('products.likes');
+	Route::get('/products-solds', 'ProductController@solds')->name('products.solds');
+	Route::get('/products-likes', 'ProductController@likes')->name('products.likes');
 
 	Route::resource('slider', 'SliderController');
-	Route::resource('category', 'CategoryController');
+  Route::resource('category', 'CategoryController');
+  Route::resource('bulletin', 'BulletinController');
+	Route::get('/bulletin-delete/{id}', 'BulletinController@delete')->name('bulletin.delete');
 
 	Route::get('/subscriptions', 'SubscriptionController@index')->name('subscription.index');
 	Route::get('/subscriptions/create', 'SubscriptionController@create')->name('subscription.create');

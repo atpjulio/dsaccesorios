@@ -11,7 +11,7 @@
             <p class="title-description"> Aquí puedes ver el listado de todos los subscriptores y el estado de cada uno </p>
         </div>
         <div class="float-right animated fadeInRight">
-            <a href="{{ route('subscription.create') }}" class="btn btn-pill-left btn-primary btn-lg">
+            <a href="{{ route('bulletin.create') }}" class="btn btn-pill-left btn-primary btn-lg">
                 <i class="fa fa-plus"></i>
                 Nuevo Boletín
             </a>
