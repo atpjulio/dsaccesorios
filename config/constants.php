@@ -10,7 +10,6 @@ $myConstants = [
         0 => 'No',
     ],
     'stylesVersion' => '1.005',
-    // 'productImage' => 'public/img/products',
     'productImages' => 'public/img/products/',
     'sliderImages' => '/img/slider/',
     'usersImages' => '/img/users/',
@@ -49,13 +48,11 @@ $myConstants = [
           'unpaid' => 0,
           'paid' => 1,
           'pending' => 2,
-          'demo' => 3,
         ],
         'frontEnd' => [
             0 => 'Sin pagar',
             1 => 'Pagada',
             2 => 'Pendiente',
-            3 => 'Demo',
         ],
         'type' => [
             1 => 'Efectivo',

@@ -114,7 +114,7 @@ class Order extends Model
         }
         $order->shipping = 10000;
         $order->total = $order->sub_total + $order->shipping;
-        $order->status = config('constants.transactions.frontEnd')[0];
+        $order->status = config('constants.transactions.status.unpaid');
         $order->save();
 
         $subject = "Confirmación de pedido: ".$order->number;

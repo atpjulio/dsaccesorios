@@ -55,27 +55,27 @@
 			</div>
 			<div class="form-group @if($errors->has('total')) has-error @endif">
     			{!! Form::label('total', 'Monto', ['class' => 'control-label']) !!}
-			    {!! Form::text('total', old('total', isset($order) ? $order->total : ''), ['class' => 'form-control underlined', 'placeholder' => 'Monto', 'readonly']) !!}
+			    {!! Form::text('total', old('total', isset($order) ? $order->total : ''), ['class' => 'form-control underlined', 'placeholder' => 'Monto']) !!}
 			</div>
 			<div class="form-group @if($errors->has('status')) has-error @endif">
     			{!! Form::label('status', 'Estado del pedido', ['class' => 'control-label']) !!}
-			    {!! Form::text('status', old('status', isset($order) ? $order->status : ''), ['class' => 'form-control underlined', 'placeholder' => 'Estado', 'readonly']) !!}
+    			{!! Form::select('status', config('constants.transactions.frontEnd'), old('status', isset($order) ? $order->status : ''), ['class' => 'form-control']) !!}
 			</div>
 			<div class="form-group @if($errors->has('order_phone')) has-error @endif">
     			{!! Form::label('order_phone', 'Número de contacto', ['class' => 'control-label']) !!}
-			    {!! Form::text('order_phone', old('order_phone', isset($order) ? $order->phone : ''), ['class' => 'form-control underlined', 'placeholder' => 'Número de contacto', 'readonly']) !!}
+			    {!! Form::text('order_phone', old('order_phone', isset($order) ? $order->phone : ''), ['class' => 'form-control underlined', 'placeholder' => 'Número de contacto']) !!}
 			</div>
 			<div class="form-group @if($errors->has('full_address')) has-error @endif">
     			{!! Form::label('full_address', 'Dirección', ['class' => 'control-label']) !!}
-			    {!! Form::text('full_address', old('full_address', (isset($order) and $order->address_1) ? $order->full_address : ''), ['class' => 'form-control underlined', 'placeholder' => 'Dirección', 'readonly']) !!}
+			    {!! Form::text('full_address', old('full_address', (isset($order) and $order->address_1) ? $order->full_address : ''), ['class' => 'form-control underlined', 'placeholder' => 'Dirección']) !!}
 			</div>
 			<div class="form-group @if($errors->has('address_city')) has-error @endif">
     			{!! Form::label('address_city', 'Municipio', ['class' => 'control-label']) !!}
-			    {!! Form::text('address_city', old('address_city', isset($order) ? $order->address_city : ''), ['class' => 'form-control underlined', 'placeholder' => 'Número de contacto', 'readonly']) !!}
+			    {!! Form::text('address_city', old('address_city', isset($order) ? $order->address_city : ''), ['class' => 'form-control underlined', 'placeholder' => 'Número de contacto']) !!}
 			</div>
 			<div class="form-group @if($errors->has('address_state')) has-error @endif">
     			{!! Form::label('address_state', 'Departamento', ['class' => 'control-label']) !!}
-			    {!! Form::text('address_state', old('address_state', isset($order) ? $order->address_state : ''), ['class' => 'form-control underlined', 'placeholder' => 'Número de contacto', 'readonly']) !!}
+			    {!! Form::text('address_state', old('address_state', isset($order) ? $order->address_state : ''), ['class' => 'form-control underlined', 'placeholder' => 'Número de contacto']) !!}
 			</div>
         </div>
     </div>
