@@ -40,11 +40,17 @@
                                     @if(count($orders) > 0)
                                     @foreach($orders as $order)
                                     <tr>
-                                        <td>{!! $order->number !!}</td>
+                                        <td>
+                                            <a href="{{ route('my.order', $order->id) }}">
+                                                {!! $order->number !!}
+                                            </a>
+                                        </td>
                                         <td>{!! \App\Utilities::humanProducts($order->products) !!}</td>
                                         <td class="text-center">{!! \App\Utilities::currency($order->total) !!}</td>
                                         <td class="text-center">{!! \App\Utilities::humanDate($order->created_at) !!}</td>
-                                        <td>{!! $order->status !!}</td>
+                                        <td>
+                                            {!! config('constants.transactions.frontEnd.'.$order->status) !!}
+                                        </td>
                                     </tr>
                                     @endforeach
                                     @endif

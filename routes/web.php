@@ -67,6 +67,7 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
 Route::middleware(['auth', 'both'])->group(function () {
   	Route::resource('orders', 'OrderController');
+    Route::get('my-order/{id}', 'OrderController@show')->name('my.order');
   	Route::get('my-orders', 'OrderController@myOrders')->name('my.orders');
   	Route::get('my-profile', 'HomeController@myProfile')->name('my.profile');
   	Route::post('update-profile', 'HomeController@updateProfile')->name('update.profile');

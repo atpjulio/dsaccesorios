@@ -24,3 +24,7 @@
     </section>
     {!! Form::close() !!}
 @endsection
+
+@push('scripts')
+    <script src="{{ asset('js/orders/edit.js') }}"></script>
+@endpush

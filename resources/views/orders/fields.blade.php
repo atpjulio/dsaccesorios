@@ -47,15 +47,16 @@
 	    	</div>
 			<div class="form-group @if($errors->has('sub_total')) has-error @endif">
     			{!! Form::label('sub_total', 'Sub-total', ['class' => 'control-label']) !!}
-			    {!! Form::text('sub_total', old('sub_total', isset($order) ? $order->sub_total : ''), ['class' => 'form-control underlined', 'placeholder' => 'Sub-total', 'readonly']) !!}
+			    {!! Form::number('sub_total', old('sub_total', isset($order) ? $order->sub_total : ''), ['class' => 'form-control underlined', 'placeholder' => 'Sub-total', 'readonly', 'id' => 'sub_total']) !!}
 			</div>
 			<div class="form-group @if($errors->has('shipping')) has-error @endif">
     			{!! Form::label('shipping', 'Costos de envío', ['class' => 'control-label']) !!}
-			    {!! Form::text('shipping', old('shipping', isset($order) ? $order->shipping : ''), ['class' => 'form-control underlined', 'placeholder' => 'Costos de envío']) !!}
+			    {!! Form::number('shipping', old('shipping', isset($order) ? $order->shipping : ''), ['class' => 'form-control underlined', 'placeholder' => 'Costos de envío', 'min' => 0,
+			    'id' => 'shipping']) !!}
 			</div>
 			<div class="form-group @if($errors->has('total')) has-error @endif">
     			{!! Form::label('total', 'Monto', ['class' => 'control-label']) !!}
-			    {!! Form::text('total', old('total', isset($order) ? $order->total : ''), ['class' => 'form-control underlined', 'placeholder' => 'Monto']) !!}
+			    {!! Form::number('total', old('total', isset($order) ? $order->total : ''), ['class' => 'form-control underlined', 'placeholder' => 'Monto', 'readonly', 'id' => 'total']) !!}
 			</div>
 			<div class="form-group @if($errors->has('status')) has-error @endif">
     			{!! Form::label('status', 'Estado del pedido', ['class' => 'control-label']) !!}
@@ -75,7 +76,7 @@
 			</div>
 			<div class="form-group @if($errors->has('address_state')) has-error @endif">
     			{!! Form::label('address_state', 'Departamento', ['class' => 'control-label']) !!}
-			    {!! Form::text('address_state', old('address_state', isset($order) ? $order->address_state : ''), ['class' => 'form-control underlined', 'placeholder' => 'Número de contacto']) !!}
+                {!! Form::select('address_state', \App\State::getStates(), old('address_state', isset($order) ? $order->address_state : ''), ['class' => 'form-control']) !!}
 			</div>
         </div>
     </div>
@@ -86,6 +87,38 @@
 	    	<div class="title-block">
 	    		<h3 class="title">Productos en el pedido</h3>
 	    	</div>
+
+		    <div class="table-responsive">
+		        <table class="table table-striped table-hover">
+		            <thead>
+		            <tr class="">
+		                <th scope="col" class="">Producto</th>
+		                <th scope="col" style="">Cantidad</th>
+		                <th scope="col" class="">Precio Unitario</th>
+		                <th scope="col" style="">Monto</th>
+		            </tr>
+		            </thead>
+		            <tbody>
+	            	@php
+	            		$total = 0;
+	            	@endphp
+        		    @foreach(json_decode($order->products, true) as $article)     
+				        @php
+				            $product = \App\Product::getProductById(array_keys($article)[0]);
+				            $total += $product->price * array_sum($article);
+				        @endphp
+				        <tr>
+				        	<td>{!! $product->name !!}</td>
+				            <td>{!! array_sum($article) !!}</td>
+				            <td>$ {!! number_format($product->price, 2, ",", ".") !!}</td>
+				            <td>
+			                    $ {!! number_format($product->price * array_sum($article), 2, ",", ".") !!}
+				            </td>
+				        </tr>
+				    @endforeach
+					</tbody>
+		        </table>
+		    </div>
 		</div>
 	</div>
 </div>

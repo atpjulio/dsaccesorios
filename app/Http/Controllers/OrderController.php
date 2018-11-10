@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UpdateOrderRequest;
 use App\Order;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -49,7 +50,8 @@ class OrderController extends Controller
      */
     public function show($id)
     {
-        //
+        $order = Order::findOrFail($id);
+        return view('orders.my_order', compact('order'));
     }
 
     /**
@@ -61,7 +63,6 @@ class OrderController extends Controller
     public function edit($id)
     {
         $order = Order::findOrFail($id);
-
         return view('orders.edit', compact('order'));
     }
 
@@ -72,8 +73,10 @@ class OrderController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateOrderRequest $request, $id)
     {
+        Order::updateRecord($request, $id);
+
         Session::flash('message', 'Pedido actualizado exitosamente');
         return redirect()->route('orders.index');        
     }

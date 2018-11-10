@@ -52,7 +52,9 @@
                                         <td class="text-center">{!! \App\Utilities::totalProducts($order->products) !!}</td>
                                         <td class="text-center">{!! \App\Utilities::currency($order->total) !!}</td>
                                         <td class="text-center">{!! \App\Utilities::humanDate($order->created_at) !!}</td>
-                                        <td>{!! $order->status !!}</td>
+                                        <td>
+                                            {!! config('constants.transactions.frontEnd.'.$order->status) !!}
+                                        </td>
                                     </tr>
                                     @endforeach
                                     @endif

@@ -113,7 +113,7 @@
                     </ul>
                 </li>
                 @endrole
-                <li class="@if(Request::is('orders*') or Request::is('my-orders*')) open active @endif">
+                <li class="@if(Request::is('orders*') or Request::is('my-order*')) open active @endif">
                     <a href="">
                         <i class="fas fa-cubes"></i> Pedidos
                         <i class="fa arrow"></i>
@@ -129,7 +129,7 @@
                     </ul>
                     @endrole
                     <ul class="sidebar-nav">
-                        <li class="@if(Request::is('my-orders')) active @endif" >
+                        <li class="@if(Request::is('my-order*')) active @endif" >
                             <a href="{{ route('my.orders') }}">
                                 <i class="fas fa-cube"></i>&nbsp;
                                 Mis Pedidos

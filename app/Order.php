@@ -154,4 +154,23 @@ class Order extends Model
 
         return $order;
     }
+
+    protected function updateRecord($request, $id)
+    {
+        $order = $this::find($id);
+        if (!$order) {
+            return null;
+        }
+
+        $order->shipping = $request->get('shipping');
+        $order->total = $request->get('total');
+        $order->status = $request->get('status');
+        $order->address_1 = $request->get('full_address');
+        $order->address_city = $request->get('address_city');
+        $order->address_state = $request->get('address_state');
+        $order->phone = $request->get('order_phone');
+
+        $order->save();
+    }
+
 }
