@@ -15,6 +15,7 @@ class ChangeStatusFieldOnOrders extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->dropColumn('status');
+            $table->dropColumn('notes');
         });
     }
 
@@ -27,6 +28,7 @@ class ChangeStatusFieldOnOrders extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->string('status', 10)->nullable();
+            $table->string('notes', 50)->nullable();
         });
     }
 }

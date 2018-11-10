@@ -19,7 +19,7 @@
 			</div>
 			<div class="form-group @if($errors->has('status')) has-error @endif">
     			{!! Form::label('status', 'Estado del pedido', ['class' => 'control-label']) !!}
-    			{!! Form::select('status', config('constants.transactions.frontEnd'), old('status', isset($order) ? $order->status : ''), ['class' => 'form-control', 'readonly']) !!}
+    			{!! Form::select('status', config('constants.transactions.frontEnd'), old('status', isset($order) ? $order->status : ''), ['class' => 'form-control', 'disabled']) !!}
 			</div>
         </div>
     </div>
@@ -44,8 +44,14 @@
 			</div>
 			<div class="form-group @if($errors->has('address_state')) has-error @endif">
     			{!! Form::label('address_state', 'Departamento', ['class' => 'control-label']) !!}
-                {!! Form::select('address_state', \App\State::getStates(), old('address_state', isset($order) ? $order->address_state : ''), ['class' => 'form-control', 'readonly']) !!}
+                {!! Form::select('address_state', \App\State::getStates(), old('address_state', isset($order) ? $order->address_state : ''), ['class' => 'form-control', 'disabled']) !!}
 			</div>
+			@if ($order->notes)
+			<div class="form-group @if($errors->has('notes')) has-error @endif">
+			    {!! Form::label('notes', 'Detalles del envío', ['class' => 'control-label']) !!}
+			    {!! Form::textarea('notes', old('notes', isset($order) ? $order->notes : ''), ['class' => 'form-control underlined', 'placeholder' => 'Detalles del envío', 'rows' => '5']) !!}
+			</div>
+			@endif
         </div>
     </div>
 </div>

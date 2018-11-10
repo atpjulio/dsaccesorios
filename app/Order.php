@@ -169,6 +169,7 @@ class Order extends Model
         $order->address_city = $request->get('address_city');
         $order->address_state = $request->get('address_state');
         $order->phone = $request->get('order_phone');
+        $order->notes = $request->get('notes');
 
         $order->save();
     }

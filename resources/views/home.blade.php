@@ -38,6 +38,23 @@
                 </div>
             </div>
             @endrole
+            <div class="col-xl-4">
+                <div class="card card-pink">
+                    <div class="card-header">
+                        <div class="header-block">
+                            <p class="title"> Mis Pedidos </p>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <p>Verás un listado de los Pedidos que tienes guardados en el sistema y conocer el estado y detalle de cada uno de ellos</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ route('my.orders') }}">
+                            Ir a Mis Pedidos
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </section>
 @endsection

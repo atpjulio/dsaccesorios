@@ -15,6 +15,7 @@ class AddStatusFieldOnOrders extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->boolean('status')->default(0);
+            $table->longText('notes')->nullable();
         });
     }
 
@@ -27,6 +28,7 @@ class AddStatusFieldOnOrders extends Migration
     {
         Schema::table('orders', function (Blueprint $table) {
             $table->dropColumn('status');
+            $table->dropColumn('notes');
         });
     }
 }

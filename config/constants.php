@@ -9,7 +9,7 @@ $myConstants = [
         1 => 'Si',
         0 => 'No',
     ],
-    'stylesVersion' => '1.005',
+    'stylesVersion' => '1.006',
     'productImages' => 'public/img/products/',
     'sliderImages' => '/img/slider/',
     'usersImages' => '/img/users/',
@@ -51,7 +51,7 @@ $myConstants = [
         ],
         'frontEnd' => [
             0 => 'Sin pagar',
-            1 => 'Pagada',
+            1 => 'Pagado',
             2 => 'Pendiente',
         ],
         'type' => [
