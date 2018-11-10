@@ -1,3 +1,17 @@
+@if ($order->notes)
+<div class="col-md-12">
+    <div class="card">
+	    <div class="card-block">
+	    	<div class="title-block">
+	    		<h3 class="title">Detalles del envío</h3>
+				<div class="form-group @if($errors->has('notes')) has-error @endif">
+				    {!! Form::textarea('notes', old('notes', isset($order) ? $order->notes : ''), ['class' => 'form-control underlined', 'placeholder' => 'Detalles del envío', 'rows' => '5']) !!}
+				</div>
+	    	</div>
+	    </div>
+	</div>
+</div>
+@endif
 <div class="col-md-6">
     <div class="card">
 	    <div class="card-block">
@@ -46,12 +60,6 @@
     			{!! Form::label('address_state', 'Departamento', ['class' => 'control-label']) !!}
                 {!! Form::select('address_state', \App\State::getStates(), old('address_state', isset($order) ? $order->address_state : ''), ['class' => 'form-control', 'disabled']) !!}
 			</div>
-			@if ($order->notes)
-			<div class="form-group @if($errors->has('notes')) has-error @endif">
-			    {!! Form::label('notes', 'Detalles del envío', ['class' => 'control-label']) !!}
-			    {!! Form::textarea('notes', old('notes', isset($order) ? $order->notes : ''), ['class' => 'form-control underlined', 'placeholder' => 'Detalles del envío', 'rows' => '5']) !!}
-			</div>
-			@endif
         </div>
     </div>
 </div>
