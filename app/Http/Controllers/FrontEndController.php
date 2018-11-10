@@ -190,7 +190,7 @@ class FrontEndController extends Controller
             Session::flash('message_danger', 'No se puede acceder a la confirmación del pedido');
             return redirect()->route('cart');
         }
-        Session::flash('message_warning', 'Se enviará el pedido a su correo como aval de la compra y uno de nuestros agentes de venta le estará contactando a su correo o en su defecto al número de celular guardado en el sistema');
+//        Session::flash('message_warning', 'Se enviará el pedido a su correo como aval de la compra y uno de nuestros agentes de venta le estará contactando a su correo o en su defecto al número de celular guardado en el sistema');
         return view('cart_confirm', compact('shoppingCart', 'show'));
     }
 

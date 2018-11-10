@@ -10,6 +10,12 @@
             <h3 class="title"> Mis Pedidos </h3>
             <p class="title-description"> Listado de tus pedidos donde podrás ver los detalles de cada uno </p>
         </div>
+        <div class="float-right animated fadeInRight">
+            <a href="{{ route('store') }}" class="btn btn-pill-left btn-primary btn-lg">
+                <i class="fas fa-shopping-cart"></i>
+                Ir a la tienda
+            </a>
+        </div>        
     </div>
 
     <section class="section">

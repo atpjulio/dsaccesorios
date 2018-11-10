@@ -10,12 +10,14 @@
             <h3 class="title"> Administrar Pedidos </h3>
             <p class="title-description"> Aquí puedes ver el listado de todos los pedidos y crear manualmente, actualizar o eliminar cualquier pedido </p>
         </div>
+        {{-- 
         <div class="float-right animated fadeInRight">
             <a href="{{ route('orders.create') }}" class="btn btn-pill-left btn-primary btn-lg">
                 <i class="fa fa-plus"></i>
                 Nuevo Pedido
             </a>
         </div>
+        --}}
     </div>
 
     <section class="section">
@@ -41,7 +43,11 @@
                                     @if(count($orders) > 0)
                                     @foreach($orders as $order)
                                     <tr>
-                                        <td>{!! $order->number !!}</td>
+                                        <td>
+                                            <a href="{{ route('orders.edit', $order->id) }}">
+                                                {!! $order->number !!}
+                                            </a>
+                                        </td>
                                         <td>{!! $order->user->full_name.' - '.$order->user->email !!}</td>
                                         <td class="text-center">{!! \App\Utilities::totalProducts($order->products) !!}</td>
                                         <td class="text-center">{!! \App\Utilities::currency($order->total) !!}</td>

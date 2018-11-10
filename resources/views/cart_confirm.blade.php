@@ -32,6 +32,16 @@
         </table>
     </div>
 
+    <div class="col-12">
+        <strong>NOTA:</strong>
+        <p>
+            El proceso de pago es de la siguiente manera: Al hacer clic en el botón 'Pagar Pedido' se enviará el pedido a su correo como aval de la compra y uno de nuestros agentes de venta le estará contactando a su correo o en su defecto al número de celular guardado en el sistema para la consignación o transferencia por nuestros diferentes medios de pago.
+            <br>
+            <em>Esta medida es temporal mientras culminamos la instalación de la plataforma de pago automatizada</em>
+        </p>
+        <br>
+    </div>
+
     @if (count($shoppingCart) > 0)
     {!! Form::open(['route' => 'pay.cart.process', 'method' => 'POST']) !!}
         <div class="text-right">
@@ -39,7 +49,7 @@
                 Regresar
             </a>
             &nbsp;&nbsp;
-            {!! Form::submit('Pagar el Pedido', ['class' => 'btn btn-secondary']) !!}
+            {!! Form::submit('Pagar Pedido', ['class' => 'btn btn-secondary']) !!}
             <div class="form-check">
                 <br>
                 <label>

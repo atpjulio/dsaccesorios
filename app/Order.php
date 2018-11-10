@@ -91,15 +91,50 @@ class Order extends Model
                 break;
             }
             $order->sub_total += $product->price * reset($productArray);
+            $product->update([
+                'quantity' => $product->quantity
+            ]);
         }
-
-        // TODO: Update product inventory
 
         $order->shipping = 10000;
         $order->total = $order->sub_total + $order->shipping;
         $order->status = config('constants.transactions.frontEnd')[0];
-
         $order->save();
+
+        $subject = "Confirmación de pedido: ".$order->number;
+
+        $content = "<h4>Pedido: #$order->number</h4>".
+            "<h4 style='font-weight: normal;'>Solicitado por: ".auth()->user()->full_name."<br>";
+
+        if (auth()->user()->dni_type) {
+            $content .= "Tipo de documento: ".auth()->user()->dni_type."<br>".
+            "Número de documento: ".auth()->user()->dni."<br>";
+        }
+
+        if (auth()->user()->phone) {
+            $content .= "# Contacto: ".auth()->user()->phone->phone."<br>";
+        }            
+            
+        if (auth()->user()->address) {
+            $content .= "Dirección de entrega: <br>".
+                "&nbsp;&nbsp;&nbsp;Dirección:".auth()->user()->address->full_address."<br>".
+                "&nbsp;&nbsp;&nbsp;Municipio:".auth()->user()->address->city."<br>".
+                "&nbsp;&nbsp;&nbsp;Departamento:".auth()->user()->address->state."<br>";
+        }
+        $content .= "</h4>";
+
+        Utilities::sendConfirmationOrder(auth()->user(), $subject, $content, $shoppingCart);
+
+        $subject = "Nueva compra! Pedido #: ".$order->number;
+
+        $content = "<h3>Fecha de solicitud: ".\Carbon\Carbon::now()->format("d/m/Y")."</h3>".$content;
+        $content .= "Ingresa a tu sesión para ver los detalles del pedido<br>".
+            env("APP_URL")."/login";
+
+        $admin = User::checkEmail(config('constants.emails.admin'));
+        if ($admin) {
+            Utilities::sendEmail($admin->toArray(), $subject, $content);
+        }
 
         return $order;
     }

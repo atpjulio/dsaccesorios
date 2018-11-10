@@ -1,10 +1,6 @@
 <?php
 
 $myConstants = [
-    'emails' => [
-        'testing' => 'atpjulio@gmail.com',
-        'admin' => 'dsaccesorios@outlook.es'
-    ],
     'noYes' => [
         0 => 'No',
         1 => 'Si',
@@ -89,6 +85,10 @@ $myConstants = [
         'importTitle' => 'Importación desde Excel',
         'defaultId' => '3092',
         'defaultToken' => 'g6c75v5265vo2blv',
+    ],
+    'emails' => [
+        'testing' => 'atpjulio@gmail.com',
+        'admin' => 'dsaccesorios@outlook.es'
     ],
     'companyInfo' => [
         'name' => 'DS Accesorios 365',
