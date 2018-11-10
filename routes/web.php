@@ -54,7 +54,13 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/bulletin-delete/{id}', 'BulletinController@delete')->name('bulletin.delete');
 
 	Route::get('/subscriptions', 'SubscriptionController@index')->name('subscription.index');
-	Route::get('/subscriptions/create', 'SubscriptionController@create')->name('subscription.create');
+  Route::get('/subscriptions/create', 'SubscriptionController@create')->name('subscription.create');
+	Route::get('/subscriptions/unsubscribe/{id}', 'SubscriptionController@unsubscribe')->name('subscription.unsubscribe');
+
+  Route::get('/subscriber-activate/{id}', 'SubscriptionController@activate')->name('subscriber.activate');
+  Route::patch('/subscriber-activate-process/{subscriber}', 'SubscriptionController@activateProcess')->name('subscriber.activate.process');
+  Route::get('/subscriber-deactivate/{id}', 'SubscriptionController@deactivate')->name('subscriber.deactivate');
+  Route::patch('/subscriber-deactivate-process/{subscriber}', 'SubscriptionController@deactivateProcess')->name('subscriber.deactivate.process');
 	Route::get('/subscriber-delete/{id}', 'SubscriptionController@delete')->name('subscriber.delete');
 	Route::delete('/subscriber-destroy/{id}', 'SubscriptionController@destroy')->name('subscriber.destroy');
 });

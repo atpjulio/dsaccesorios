@@ -6,7 +6,12 @@
 			    {!! Form::text('title', old('title', isset($bulletin) ? $bulletin->title : ''), ['class' => 'form-control underlined', 'placeholder' => 'Título del boletín']) !!}
 			</div>
 			<div class="form-group @if($errors->has('subject')) has-error @endif">
-			    {!! Form::label('subject', 'Asunto del correo', ['class' => 'control-label']) !!}
+			    <div class="float-left">
+			    	{!! Form::label('subject', 'Asunto del correo', ['class' => 'control-label']) !!}
+			    </div>
+			    <div class="float-right">
+				    {!! Form::submit('Hacer prueba', ['class' => 'btn btn-oval btn-primary-outline', 'name' => 'test']) !!}
+			    </div>
 			    {!! Form::text('subject', old('subject', isset($bulletin) ? $bulletin->subject : ''), ['class' => 'form-control underlined', 'placeholder' => 'Asunto']) !!}
 			</div>
 			<div class="form-group @if($errors->has('content')) has-error @endif">

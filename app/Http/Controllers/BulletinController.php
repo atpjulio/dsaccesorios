@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\Bulletin;
 use App\Http\Requests\StoreBulletinRequest;
 use App\Http\Requests\UpdateBulletinRequest;
+use App\Utilities;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
 
@@ -41,6 +42,13 @@ class BulletinController extends Controller
     public function store(StoreBulletinRequest $request)
     {
         if (auth()->user()->hasRole('admin')) {
+
+            if ($request->get('test')) {
+                Utilities::sendBulletin(auth()->user(), $request->get('subject'), $request->get('content'), true);
+                Session::flash('message', 'Boletín de prueba enviado exitosamente');
+                return redirect()->back()->withInput();
+            }
+
             $result = Bulletin::storeRecord($request);
 
             Session::flash('message', 'Boletín guardado exitosamente');
@@ -48,7 +56,7 @@ class BulletinController extends Controller
                 Session::flash('message', 'Boletín guardado y enviado exitosamente');                
             }
         }
-        return redirect()->route('bulletin.index');        
+        return redirect()->route('bulletin.index');
     }
 
     /**
@@ -83,6 +91,12 @@ class BulletinController extends Controller
     public function update(UpdateBulletinRequest $request, Bulletin $bulletin)
     {
         if (auth()->user()->hasRole('admin')) {
+
+            if ($request->get('test')) {
+                Utilities::sendBulletin(auth()->user(), $request->get('subject'), $request->get('content'), true);
+                Session::flash('message', 'Boletín de prueba enviado exitosamente');
+                return redirect()->back()->withInput();
+            }
             $result = Bulletin::updateRecord($request, $bulletin);
 
             Session::flash('message', 'Boletín actualizado exitosamente');

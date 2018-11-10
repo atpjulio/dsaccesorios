@@ -78,8 +78,12 @@ class Utilities extends Model
         }
     }
 
-    static function sendBulletin($subscriber, $subject, $content)
+    static function sendBulletin($subscriber, $subject, $content, $test = false)
     {
+        if (!$subscriber) {
+            return;
+        }
+
         $user['email'] = $subscriber->email;
         $user['first_name'] = '';
         $user['last_name'] = '';
@@ -87,14 +91,21 @@ class Utilities extends Model
         $customerEmail = $user['email'];
         $customerName = $user['first_name'] . " " . $user['last_name'];
         
+        if ($test) {
+            $subject = "[ PRUEBA ] " . $customerEmail . " -> " . $subject;
+            $customerEmail = auth()->user()->email;
+            $customerName = "Probando Boletín";            
+        }
+
         if (!env("PRODUCTION")) {
             $subject = "Prueba -> " . $customerEmail . " -> " . time() . " " . $subject;
             $customerEmail = config('constants.emails.testing');
             $customerName = "Ambiente de Desarrollo";
         }
-        
+
         $data['users'] = $user;
         $data['content'] = $content;
+        $data['id'] = $subscriber->id;
         try {
             Mail::send('emails.bulletin', $data, function($message) use($customerEmail, $customerName, $subject)
             {

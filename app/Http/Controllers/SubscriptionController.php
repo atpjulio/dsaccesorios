@@ -32,6 +32,42 @@ class SubscriptionController extends Controller
         return view('subscriptions.delete_modal', compact('subscriber'));
     }
 
+    public function activate($id)
+    {
+        $subscriber = Subscription::findOrFail($id);
+
+        return view('subscriptions.activate_modal', compact('subscriber'));
+    }
+
+    public function activateProcess(Subscription $subscriber)
+    {
+        $subscriber->update([
+            'status' => config('constants.status.active')
+        ]);
+
+        Session::flash('message', 'Subscriptor activado exitosamente');
+
+        return redirect()->route('subscription.index');
+    }
+
+    public function deactivate($id)
+    {
+        $subscriber = Subscription::findOrFail($id);
+
+        return view('subscriptions.deactivate_modal', compact('subscriber'));
+    }
+
+    public function deactivateProcess(Subscription $subscriber)
+    {
+        $subscriber->update([
+            'status' => 0
+        ]);
+
+        Session::flash('message', 'Subscriptor desactivado exitosamente');
+
+        return redirect()->route('subscription.index');
+    }
+
     public function destroy($id)
     {
         $subscriber = Subscription::findOrFail($id);
@@ -39,7 +75,18 @@ class SubscriptionController extends Controller
 
         Session::flash('message', 'Subscriptor borrado exitosamente');
 
-        return redirect()->route('subscriptions.index');
+        return redirect()->route('subscription.index');
     }
 
+    public function unsubscribe($id)
+    {
+        $subscriber = Subscription::findOrFail($id);
+        $subscriber->update([
+            'status' => 0
+        ]);
+
+        Session::flash('message', 'Has finalizado tu suscripción en las noticias de nuestra página');
+
+        return redirect()->to('/');
+    }
 }

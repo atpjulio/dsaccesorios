@@ -41,9 +41,15 @@
                                     <td>{!! $subscriber->status ? 'Activo' : 'Inactivo' !!}</td>
                                     <td>
                                     @role('admin')
-                                        <a href="#" class="btn btn-pill-left btn-info btn-sm">
-                                            Enviar correo
-                                        </a>
+                                        @if ($subscriber->status)
+                                            <a href="javascript:showModal('subscriber-deactivate/{{ $subscriber->id }}')" class="btn btn-pill-left btn-warning btn-sm">
+                                                Desactivar
+                                            </a>
+                                        @else
+                                            <a href="javascript:showModal('subscriber-activate/{{ $subscriber->id }}')" class="btn btn-pill-left btn-success btn-sm">
+                                                Activar
+                                            </a>
+                                        @endif
                                         <a href="javascript:showModal('subscriber-delete/{{ $subscriber->id }}')" class="btn btn-pill-right btn-danger btn-sm">
                                             Borrar
                                         </a>

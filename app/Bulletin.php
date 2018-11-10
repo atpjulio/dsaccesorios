@@ -49,8 +49,8 @@ class Bulletin extends Model
 
         if ($request->get('saveOnly') == null) {
             $subscribers = Subscription::getActiveSubscribers();
-
             if ($subscribers) {            
+                $bulletin->amount = 0;
                 foreach ($subscribers as $key => $subscriber) {
                     Utilities::sendBulletin($subscriber, $bulletin->subject, $bulletin->content);
                     $bulletin->amount++;

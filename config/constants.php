@@ -3,7 +3,7 @@
 $myConstants = [
     'emails' => [
         'testing' => 'atpjulio@gmail.com',
-        'admin' => 'dsaccesorios@outlook.com'
+        'admin' => 'dsaccesorios@outlook.es'
     ],
     'noYes' => [
         0 => 'No',

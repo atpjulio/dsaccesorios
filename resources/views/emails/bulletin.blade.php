@@ -20,6 +20,17 @@
                 <tr>
                     <td style="padding: 10px;background-color:#FFFFFF" align="left;">
                         {!! $content !!}
+                        <br><br>
+                        <p>
+                            <em>
+                                Para evitar seguir recibiendo noticias de {{ config('constants.companyInfo.longName') }} puedes hacer clic en el siguiente enlace
+                            </em>
+                        </p>
+                        <p>
+                            <em>
+                                 {!! env('APP_URL')."/subscriptions/unsubscribe/".$id !!}
+                            </em>
+                        </p>
                     </td>
                 </tr>
             </tbody>
