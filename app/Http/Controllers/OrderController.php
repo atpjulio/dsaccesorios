@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Order;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class OrderController extends Controller
 {
@@ -59,7 +60,9 @@ class OrderController extends Controller
      */
     public function edit($id)
     {
-        //
+        $order = Order::findOrFail($id);
+
+        return view('orders.edit', compact('order'));
     }
 
     /**
@@ -71,7 +74,8 @@ class OrderController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        Session::flash('message', 'Pedido actualizado exitosamente');
+        return redirect()->route('orders.index');        
     }
 
     /**
@@ -82,7 +86,8 @@ class OrderController extends Controller
      */
     public function destroy($id)
     {
-        //
+        Session::flash('message', 'Pedido eliminado exitosamente');
+        return redirect()->route('orders.index');        
     }
 
     public function myOrders()

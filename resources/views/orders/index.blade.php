@@ -8,7 +8,7 @@
     <div class="title-block">
         <div class="float-left">
             <h3 class="title"> Administrar Pedidos </h3>
-            <p class="title-description"> Aquí puedes ver el listado de todos los pedidos y crear manualmente, actualizar o eliminar cualquier pedido </p>
+            <p class="title-description"> Aquí puedes ver el listado de todos los pedidos y actualizar o eliminar cualquier pedido </p>
         </div>
         {{-- 
         <div class="float-right animated fadeInRight">

@@ -63,6 +63,11 @@ class Order extends Model
         return sprintf("%09d", $this->id);
     }
 
+    public function getFullAddressAttribute()
+    {
+        return $this->address_1.' '.$this->address_2;
+    }
+
     public function getCreatedAtFormattedAttribute()
     {
         return \Carbon\Carbon::parse($this->created_at)->format("d/m/Y");
@@ -81,7 +86,8 @@ class Order extends Model
     {
         $order = new Order();
 
-        $order->user_id = auth()->user()->id;
+        $user = auth()->user();
+        $order->user_id = $user->id;
         $order->products = json_encode($shoppingCart);
         $order->sub_total = 0;
 
@@ -96,6 +102,16 @@ class Order extends Model
             ]);
         }
 
+        if ($user->phone) {
+            $order->phone = $user->phone->phone."<br>";
+        }            
+            
+        if ($user->address) {
+            $order->address1 = $user->address->address1;
+            $order->address2 = $user->address->address2;
+            $order->city = $user->address->city;
+            $order->state = $user->address->state;
+        }
         $order->shipping = 10000;
         $order->total = $order->sub_total + $order->shipping;
         $order->status = config('constants.transactions.frontEnd')[0];
@@ -104,26 +120,26 @@ class Order extends Model
         $subject = "Confirmación de pedido: ".$order->number;
 
         $content = "<h4>Pedido: #$order->number</h4>".
-            "<h4 style='font-weight: normal;'>Solicitado por: ".auth()->user()->full_name."<br>";
+            "<h4 style='font-weight: normal;'>Solicitado por: ".$user->full_name."<br>";
 
-        if (auth()->user()->dni_type) {
-            $content .= "Tipo de documento: ".auth()->user()->dni_type."<br>".
-            "Número de documento: ".auth()->user()->dni."<br>";
+        if ($user->dni_type) {
+            $content .= "Tipo de documento: ".$user->dni_type."<br>".
+            "Número de documento: ".$user->dni."<br>";
         }
 
-        if (auth()->user()->phone) {
-            $content .= "# Contacto: ".auth()->user()->phone->phone."<br>";
+        if ($user->phone) {
+            $content .= "# Contacto: ".$user->phone->phone."<br>";
         }            
             
-        if (auth()->user()->address) {
+        if ($user->address) {
             $content .= "Dirección de entrega: <br>".
-                "&nbsp;&nbsp;&nbsp;Dirección:".auth()->user()->address->full_address."<br>".
-                "&nbsp;&nbsp;&nbsp;Municipio:".auth()->user()->address->city."<br>".
-                "&nbsp;&nbsp;&nbsp;Departamento:".auth()->user()->address->state."<br>";
+                "&nbsp;&nbsp;&nbsp;Dirección:".$user->address->full_address."<br>".
+                "&nbsp;&nbsp;&nbsp;Municipio:".$user->address->city."<br>".
+                "&nbsp;&nbsp;&nbsp;Departamento:".$user->address->state."<br>";                
         }
         $content .= "</h4>";
 
-        Utilities::sendConfirmationOrder(auth()->user(), $subject, $content, $shoppingCart);
+        Utilities::sendConfirmationOrder($user, $subject, $content, $shoppingCart);
 
         $subject = "Nueva compra! Pedido #: ".$order->number;
 
