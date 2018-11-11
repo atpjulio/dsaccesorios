@@ -18,18 +18,7 @@ Route::view('/contactus', 'contactus')->name('contactus');
 Route::view('/who-are-we', 'who-are-we')->name('who.are.we');
 Route::view('/terms-and-conditions', 'terms_and_conditions')->name('tac');
 
-Route::get('/enviar', ['as' => 'enviar', function () {
-
-  $user['email'] = 'atpjulio@yahoo.es';
-  $user['first_name'] = 'Julián';
-  $user['last_name'] = 'Soler';
-  $subject = 'DS Accesorios';
-  $content = 'Primer correo electrónico';
-
-  Utilities::sendEmail($user, $subject, $content);
-
-  return "Se envío el email";
-}]);
+// Route::view('/errors', 'errors.500')->name('errors');
 
 Route::post('/pay-cart', 'FrontEndController@payCart')->name('pay.cart');
 Route::get('/pay-cart-confirm', 'FrontEndController@payCartConfirm')->name('pay.cart.confirm');

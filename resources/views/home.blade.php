@@ -28,7 +28,7 @@
                         </div>
                     </div>
                     <div class="card-block">
-                        <p>Verás un listado de los Productos registrados en el sistema, aquí puedes añadir, modificar o eliminarlos productos del sistema</p>
+                        <p>Verás un listado de los productos registrados en el sistema, aquí puedes añadir, modificar o eliminarlos productos del sistema</p>
                     </div>
                     <div class="card-footer">
                         <a href="{{ route('products.index') }}">
@@ -38,15 +38,53 @@
                 </div>
             </div>
             @endrole
+            @role('admin')
             <div class="col-xl-4">
                 <div class="card card-pink">
                     <div class="card-header">
                         <div class="header-block">
-                            <p class="title"> Mis Pedidos </p>
+                            <p class="title"> Slider </p>
                         </div>
                     </div>
                     <div class="card-block">
-                        <p>Verás un listado de los Pedidos que tienes guardados en el sistema y conocer el estado y detalle de cada uno de ellos</p>
+                        <p>Aquí encontrarás las imágenes que se muestran en la página principal. Se recomienda colocar aquí las promociones y lo nuevo</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ route('slider.index') }}">
+                            Ir a Slider
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endrole
+            @role('admin')
+            <div class="col-xl-4">
+                <div class="card card-pink">
+                    <div class="card-header">
+                        <div class="header-block">
+                            <p class="title"> Subscripciones </p>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <p>Verás un listado de los boletínes que están creados y que serán o ya han sido enviados a los suscriptores de la página</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ route('bulletin.index') }}">
+                            Ir a Subscripciones
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endrole
+            <div class="col-xl-4">
+                <div class="card card-pink">
+                    <div class="card-header">
+                        <div class="header-block">
+                            <p class="title"> Pedidos </p>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <p>Verás un listado de los pedidos que tienes guardados en el sistema y conocer el estado y detalle de cada uno de ellos</p>
                     </div>
                     <div class="card-footer">
                         <a href="{{ route('my.orders') }}">
