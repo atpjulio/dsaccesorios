@@ -37,6 +37,8 @@ Route::middleware(['auth', 'admin'])->group(function () {
 	Route::get('/products-solds', 'ProductController@solds')->name('products.solds');
 	Route::get('/products-likes', 'ProductController@likes')->name('products.likes');
 
+  Route::get('/user/delete/{id}', 'UserController@delete')->name('user.delete');
+  Route::resource('users', 'UserController');
 	Route::resource('slider', 'SliderController');
   Route::resource('category', 'CategoryController');
   Route::resource('bulletin', 'BulletinController');

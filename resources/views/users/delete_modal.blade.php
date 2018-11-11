@@ -1,14 +1,14 @@
 <div class="modal-header bg-danger">
-    <h4 class="modal-title"><i class="fa fa-warning"></i> Borrar Boletín</h4>
+    <h4 class="modal-title"><i class="fa fa-warning"></i> Borrar Usuario</h4>
     <button type="button" class="close" data-dismiss="modal" aria-label="Close">
         <span aria-hidden="true">&times;</span>
     </button>
 </div>
-{!! Form::open(['route' => ['bulletin.destroy', $bulletin], 'method' => 'DELETE']) !!}
+{!! Form::open(['route' => ['users.destroy', $user], 'method' => 'DELETE']) !!}
 <div class="modal-body">
-    <p>Confirma que deseas borrar el boletín: </p>
+    <p>Confirma que deseas borrar el usuario: </p>
     <div class="text-center">
-        {!! $bulletin->title !!}
+        {!! $user->email !!}
     </div>
 </div>
 

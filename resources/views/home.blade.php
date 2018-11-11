@@ -76,6 +76,25 @@
                 </div>
             </div>
             @endrole
+            @role('admin')
+            <div class="col-xl-4">
+                <div class="card card-pink">
+                    <div class="card-header">
+                        <div class="header-block">
+                            <p class="title"> Usuarios Registrados </p>
+                        </div>
+                    </div>
+                    <div class="card-block">
+                        <p>Verás un listado de los usuarios registrados, así como tendrás acceso a información en más detalle de cada uno de ellos</p>
+                    </div>
+                    <div class="card-footer">
+                        <a href="{{ route('users.index') }}">
+                            Ir a Usuarios Registrados
+                        </a>
+                    </div>
+                </div>
+            </div>
+            @endrole
             <div class="col-xl-4">
                 <div class="card card-pink">
                     <div class="card-header">
