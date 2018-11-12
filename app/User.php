@@ -94,4 +94,75 @@ class User extends Authenticatable
         return $this->where('email', $email)->first();
     }
 
+    protected function storeRecord($request)
+    {
+        $user = new User();
+
+        $user->first_name = $request->get('first_name');
+        $user->last_name = $request->get('last_name');
+        $user->email = $request->get('email');
+        $user->user_type = $request->get('user_type');
+        $user->purchases = $request->get('purchases');
+        $user->dni_type = $request->get('dni_type');
+        $user->dni = $request->get('dni');
+        $user->notes = $request->get('notes');
+
+        $user->save();
+
+        $address = new Address();
+
+        $address->address = $request->get('address');
+        $address->address2 = $request->get('address2');
+        $address->city = $request->get('city');
+        $address->state = $request->get('state');
+        $address->zip = $request->get('zip');
+
+        $user->address()->save($address);
+
+        $phone = new Phone();
+
+        $phone->phone = $request->get('phone');
+
+        $user->phone()->save($phone);
+
+        $user->assignRole(config('constants.userRolesString')[$user->user_type]);
+
+        return $user;        
+    }
+
+    protected function updateRecord($request, $user)
+    {
+        $user->first_name = $request->get('first_name');
+        $user->last_name = $request->get('last_name');
+        $user->user_type = $request->get('user_type');
+        $user->purchases = $request->get('purchases');
+        $user->dni_type = $request->get('dni_type');
+        $user->dni = $request->get('dni');
+        $user->notes = $request->get('notes');
+
+        $user->save();
+
+        $address = $user->address;
+        if ($address) {
+            $address->address = $request->get('address');
+            $address->address2 = $request->get('address2');
+            $address->city = $request->get('city');
+            $address->state = $request->get('state');
+            $address->zip = $request->get('zip');
+
+            $user->address()->save($address);
+        }
+
+        $phone = $user->phone;
+        if ($phone) {
+            $phone->phone = $request->get('phone');
+
+            $user->phone()->save($phone);            
+        }
+
+        $user->syncRoles(config('constants.userRolesString')[$user->user_type]);
+
+        return $user;
+    }
+
 }

@@ -119,7 +119,7 @@
                     </a>
                     <ul class="sidebar-nav">
                         <li class="@if(Request::is('users/create')) active @endif" >
-                            <a href="{{ route('users.index') }}">
+                            <a href="{{ route('users.create') }}">
                                 <i class="fa fa-plus"></i>&nbsp;
                                 Nuevo usuario
                             </a>

@@ -14,7 +14,7 @@
 			</div>
 			<div class="form-group @if($errors->has('dni_type')) has-error @endif">
     			{!! Form::label('dni_type', 'Tipo de documento', ['class' => 'control-label']) !!}
-			    {!! Form::text('dni_type', old('dni_type', isset($order) ? $order->user->dni_type : ''), ['class' => 'form-control underlined', 'placeholder' => 'Tipo de documento', 'readonly']) !!}
+			    {!! Form::text('dni_type', old('dni_type', isset($order) ? config('constants.documentTypes.'.$order->user->dni_type) : ''), ['class' => 'form-control underlined', 'placeholder' => 'Tipo de documento', 'readonly']) !!}
 			</div>
 			<div class="form-group @if($errors->has('dni')) has-error @endif">
     			{!! Form::label('dni', 'Número de documento', ['class' => 'control-label']) !!}

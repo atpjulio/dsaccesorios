@@ -171,6 +171,14 @@ class Order extends Model
         $order->phone = $request->get('order_phone');
         $order->notes = $request->get('notes');
 
+        $user = $order->user;
+
+        if ($user and $order->status == config('constants.transactions.status.paid')) {
+            $user->update([
+                'purchases' => ++$user->purchases
+            ]);
+        }
+
         $order->save();
     }
 

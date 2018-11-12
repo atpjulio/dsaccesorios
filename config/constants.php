@@ -73,9 +73,9 @@ $myConstants = [
     ],
     'pagination' => 1000,
     'documentTypes' => [
-        0 => "DNI",
-        1 => "NIE",
-        2 => "Pasaporte",
+        "CC" => "Cédula de Ciudadanía",
+        "CE" => "Cédula de Extranjería",
+        "PA" => "Pasaporte",
     ],
     'whatsapp' => [
         'importMessage' => '[Mensajes varios subidos desde archivo Excel]',

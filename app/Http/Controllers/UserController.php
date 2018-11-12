@@ -2,6 +2,8 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\StoreUserRequest;
+use App\Http\Requests\UpdateUserRequest;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
@@ -36,9 +38,14 @@ class UserController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(StoreUserRequest $request)
     {
-        //
+        if (auth()->user()->hasRole('admin')) {
+            User::storeRecord($request); 
+
+            Session::flash('message', 'Usuario guardado exitosamente');
+        }
+        return redirect()->route('users.index');
     }
 
     /**
@@ -70,9 +77,14 @@ class UserController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateUserRequest $request, User $user)
     {
-        //
+        if (auth()->user()->hasRole('admin')) {
+            User::updateRecord($request, $user);
+
+            Session::flash('message', 'Usuario actualizado exitosamente');
+        }
+        return redirect()->route('users.index');
     }
 
     /**

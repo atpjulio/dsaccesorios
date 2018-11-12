@@ -149,5 +149,8 @@ return [
         'title' => 'título',
         'subject' => 'asunto',
         'content' => 'content',
+        'purchases' => 'compras',
+        'dni_type' => 'tipo de documento',
+        'dni' => 'número de documento',
     ],
 ];
