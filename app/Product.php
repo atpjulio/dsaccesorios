@@ -51,6 +51,7 @@ class Product extends Model
         $product->quantity = intval($request->get('quantity'));
         $product->created_by = auth()->user()->id;
         $product->show = $request->get('show');
+        $product->category_id = $request->get('category_id');
 
         if ($request->hasFile('picture')) {
             $file = $request->file('picture');
@@ -79,6 +80,7 @@ class Product extends Model
         $product->quantity = intval($request->get('quantity'));
         $product->created_by = auth()->user()->id;
         $product->show = $request->get('show');
+        $product->category_id = $request->get('category_id');
 
         if ($request->hasFile('picture')) {
             $file = $request->file('picture');

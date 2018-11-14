@@ -30,7 +30,7 @@
                             <table class="table table-striped table-bordered table-condensed table-hover" id="myTable">
                                 <thead>
                                 <th style="width: 50px;">Imagen</th>
-                                <th class="">Nombre</th>
+                                <th class="">Descripción</th>
                                 <th style="width: 60px;">Disponibles</th>
                                 <th style="width: 60px;">Vendidos</th>
                                 <th style="width: 103px;">Opciones</th>
