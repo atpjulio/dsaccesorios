@@ -103,7 +103,7 @@ class Order extends Model
         }
 
         if ($user->phone) {
-            $order->phone = $user->phone->phone."<br>";
+            $order->phone = $user->phone->phone;
         }            
             
         if ($user->address) {
