@@ -107,8 +107,8 @@ class Order extends Model
         }            
             
         if ($user->address) {
-            $order->address1 = $user->address->address1;
-            $order->address2 = $user->address->address2;
+            $order->address_1 = $user->address->address1;
+            $order->address_2 = $user->address->address2;
             $order->city = $user->address->city;
             $order->state = $user->address->state;
         }

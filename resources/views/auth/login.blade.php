@@ -60,12 +60,12 @@
 
                         <div class="form-group row mb-0">
                             <div class="col-md-8 offset-md-4">
-                                <button type="submit" class="btn btn-secondary">
-                                    Entrar
-                                </button>
                                 <a class="btn btn-link" href="{{ route('password.request') }}">
                                     Olvidaste tu contraseña
                                 </a>
+                                <button type="submit" class="btn btn-secondary">
+                                    Entrar
+                                </button>
                             </div>
                         </div>
                     </form>
@@ -73,10 +73,19 @@
             </div>
         </div>
     </div>
+    <br><br>
     <div class="row justify-content-center">
-        <div class="col-md-8 text-right">
-            <br>
-            <a href="{{ route('register') }}" class="btn btn-info">Registrarse</a>        
+        <div class="col-md-8">
+            <div class="card">
+                <div class="card-header">
+                    <div class="float-left">
+                        Registrarse
+                    </div>
+                </div>
+                <div class="card-body">
+                    Para registrarse y poder pagar tus pedidos y tener beneficios adicionales como cupones de descuento y ofertas especiales, haz clic &nbsp;&nbsp;<a href="{{ route('register') }}" class="btn btn-info">Aquí</a>
+                </div>
+            </div>
         </div>
     </div>
 </div>
