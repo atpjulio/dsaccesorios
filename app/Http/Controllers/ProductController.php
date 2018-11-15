@@ -2,11 +2,12 @@
 
 namespace App\Http\Controllers;
 
-use App\Product;
 use App\Category;
+use App\Http\Requests\StoreProductRequest;
+use App\Http\Requests\UpdateProductRequest;
+use App\Product;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Session;
-use App\Http\Requests\StoreProductRequest;
 
 class ProductController extends Controller
 {
@@ -87,7 +88,7 @@ class ProductController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(UpdateProductRequest $request, $id)
     {
         if (auth()->user()->hasRole('admin')) {
             Product::updateRecord($request, $id); 
