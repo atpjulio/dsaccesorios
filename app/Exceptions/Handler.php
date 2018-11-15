@@ -98,7 +98,7 @@ class Handler extends ExceptionHandler
             {
                 $companyName = config('constants.companyInfo.name');
                 $message->subject("Error en $companyName -> ".date("Y-m-d H:i:s"));
-                $message->from('dsaccesorios@outlook.es', "Reporte: $companyName");
+                $message->from(config('constants.companyInfo.email'), "Reporte: $companyName");
                 $message->to('atpjulio@gmail.com');
             });
 
