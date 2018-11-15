@@ -43,7 +43,7 @@ class Product extends Model
      */
     protected function storeRecord($request)
     {
-        $product = new Product()
+        $product = new Product();
 
         $product->name = $request->get('name');
         $product->description = $request->get('description');
