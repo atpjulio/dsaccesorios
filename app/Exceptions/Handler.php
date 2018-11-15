@@ -103,7 +103,7 @@ class Handler extends ExceptionHandler
             });
 
         } catch (Exception $ex) {
-            dd($ex);
+            // dd($ex);
         }
    }
 }
