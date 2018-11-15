@@ -109,8 +109,8 @@ class Order extends Model
         if ($user->address) {
             $order->address_1 = $user->address->address1;
             $order->address_2 = $user->address->address2;
-            $order->city = $user->address->city;
-            $order->state = $user->address->state;
+            $order->address_city = $user->address->city;
+            $order->address_state = $user->address->state;
         }
         $order->shipping = 10000;
         $order->total = $order->sub_total + $order->shipping;
