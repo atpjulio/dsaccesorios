@@ -3,7 +3,7 @@
 @section('content')
     <div class="title-block">
         <div class="float-left">
-            <h3 class="title"> Mi cuenta: {{ auth()->user()->full_name }} </h3>
+            <h3 class="title"> Mi cuenta: {{ auth()->user()->full_name }} - Email: {{ auth()->user()->email }}</h3>
             <p class="title-description"> Cambiar información personal </p>
         </div>
     </div>
