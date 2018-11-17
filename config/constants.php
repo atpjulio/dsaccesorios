@@ -97,7 +97,7 @@ $myConstants = [
         'logo' => env('APP_URL').'img/logo.png',
         'longLogo' => 'http://dsaccesorios365.com/img/favicon.png',
         'instagram' => 'https:/www.instagram.com/ds_accesorios365/',
-        'facebook' => 'https://www.facebook.com/Ds_accesorios365-2177333129215442/',
+        'facebook' => 'https://www.facebook.com/DS-Accesorios365-2363862887174535/',
         'nit' => '1102810296-1',
         'address' => 'Calle 25 #24 - 65 Casa 11'
     ],

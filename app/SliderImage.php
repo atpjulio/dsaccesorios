@@ -10,6 +10,7 @@ class SliderImage extends Model
     	'text',
     	'url',
     	'status',
+        'position'
     ];
 
     /**
@@ -42,6 +43,19 @@ class SliderImage extends Model
         if ($sliderImage) {
             $sliderImage->update([
                 'text' => $text
+            ]); 
+        }
+
+        return $sliderImage;
+    }
+
+    protected function updatePosition($id, $position)
+    {
+        $sliderImage = $this::find($id);
+
+        if ($sliderImage) {
+            $sliderImage->update([
+                'position' => $position
             ]); 
         }
 

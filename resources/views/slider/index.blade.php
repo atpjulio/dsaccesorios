@@ -20,8 +20,8 @@
 </div>
 
 <section class="section">
-    <div class="row justify-content-center">
-        <div class="col-md-10">
+    <div class="row align-content-center">
+        <div class="col-md-12">
             <div class="card">
                 <div class="card-block">
                     <div class="card-title-block">
@@ -32,8 +32,8 @@
                              <thead>
                                 <tr>
                                     <th scope="col">Imagen</th>
-                                    <th scope="col">Texto que sale con la imagen</th>
-                                    <th scope="col">Orden de salida</th>
+                                    <th scope="col">Texto que aparece con la imagen</th>
+                                    <th scope="col">Orden de aparición</th>
                                     <th scope="col">Opciones</th>
                                 </tr>
                             </thead>
@@ -42,7 +42,7 @@
                                 <tr>
                                     <td class="text-center">
                                         <a href="javascript:showModal('slider/{{ $sliderImage->id }}')">
-                                            <img src="{{ $sliderImage->url }}" alt="" class="rounded" width="50">
+                                            <img src="{{ $sliderImage->url }}" alt="" class="rounded" width="100">
                                         </a>
                                     </td>
                                     <td>{{ $sliderImage->text ?: '<< Sin texto >>' }}</td>
