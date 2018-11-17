@@ -16,20 +16,19 @@
         </form>
     </div>
     --}}
-    {{--
     <div class="header-block header-block-buttons" >
-        <a href="https://github.com/modularcode/modular-admin-html"
+        <a href="{{ route('welcome') }}"
            class="btn btn-sm header-btn">
-            <i class="fa fa-github-alt"></i>
-            <span>View on GitHub</span>
+            <i class="fa fa-home"></i>
+            <span>Página principal</span>
+        </a>
+        <a href="{{ route('store') }}"
+           class="btn btn-sm header-btn">
+            <i class="fas fa-shopping-cart"></i>
+            <span>Tienda</span>
         </a>
 
-        <a href="https://github.com/modularcode/modular-admin-html/stargazers"
-           class="btn btn-sm header-btn">
-            <i class="fa fa-star"></i>
-            <span>Star Us</span>
-        </a>
-
+        {{-- 
         <a href="https://github.com/modularcode/modular-admin-html/releases"
            class="btn btn-sm header-btn">
             <i class="fa fa-cloud-download"></i>
@@ -39,8 +38,8 @@
             <i class="fa fa-share-alt"></i>
             Share
         </button>
+        --}}
     </div>
-    --}}
     <div class="header-block header-block-nav">
         <ul class="nav-profile">
             {{--

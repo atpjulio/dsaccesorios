@@ -43,8 +43,6 @@ class SliderController extends Controller
         $file = $request->file('image');
         $fileName = time().'_'.$file->getClientOriginalName();
 
-//        $disk = Storage::disk('public');
-//        $disk->put($fileName, fopen($file, 'r+'));
         $file->move(public_path().config('constants.sliderImages'), $fileName);
 
         SliderImage::storeRecord($fileName, $request->get('text'));
