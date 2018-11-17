@@ -29,7 +29,7 @@
                         <br>
                         <br>
                         <div class="form-group">
-                            {!! Form::label('quantity', 'Cantidad', ['class' => 'control-label']) !!}
+                            {!! Form::label('quantity', 'Cantidad a comprar', ['class' => 'control-label']) !!}
                             <br>
                             {!! Form::number('quantity', $cartQuantity > 0 ? $cartQuantity : 1, ['class' => 'control-label', 'min' => 1, 'maxlength' => 3, 'style' => 'max-width: 60px;', 'id' => 'quantity']) !!}
                         </div>
