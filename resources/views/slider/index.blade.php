@@ -28,22 +28,44 @@
                         <h3 class="title"> Imágenes guardadas en el sistema </h3>
                     </div>
                     <div class="table-responsive">
-                        <table class="table table-bordered">
+                        <table class="table table-striped table-bordered table-condensed table-hover">
                              <thead>
                                 <tr>
                                     <th scope="col">Imagen</th>
+                                    <th scope="col">Texto que sale con la imagen</th>
+                                    <th scope="col">Orden de salida</th>
                                     <th scope="col">Opciones</th>
                                 </tr>
                             </thead>
                             <tbody>
                             @foreach ($sliderImages as $sliderImage)
                                 <tr>
-                                    <td>
-                                        <div data-toggle="tooltip" data-placement="top" 
-                                            title="{{ $sliderImage->text }}">
-                                        <img src="{{ asset($sliderImage->url) }}" alt="{{ $sliderImage->text }}" class="img-fluid">
-                                        </div>
+                                    <td class="text-center">
+                                        <a href="javascript:showModal('slider/{{ $sliderImage->id }}')">
+                                            <img src="{{ $sliderImage->url }}" alt="" class="rounded" width="50">
+                                        </a>
                                     </td>
+                                    <td>{{ $sliderImage->text ?: '<< Sin texto >>' }}</td>
+                                    <td>{{ $sliderImage->id }}</td>
+                                    <td>
+                                        <a href="" data-toggle="modal" data-target="#text-modal-{{ $sliderImage->id }}" class="btn btn-pill-left btn-info btn-sm">
+                                            Texto
+                                        </a>
+                                        @if ($sliderImage->status == config('constants.status.active'))
+                                        <a href="" data-toggle="modal" data-target="#status-modal-{{ $sliderImage->id }}" class="btn btn-warning btn-sm">
+                                            Ocultar
+                                        </a>
+                                        @else
+                                        <a href="" data-toggle="modal" data-target="#status-modal-{{ $sliderImage->id }}" class="btn btn-secondary btn-sm">
+                                            Mostrar
+                                        </a>
+                                        @endif
+                                        <a href="" data-toggle="modal" data-target="#confirm-modal-{{ $sliderImage->id }}" class="btn btn-pill-right btn-danger btn-sm">
+                                            Borrar
+                                        </a>
+                                        
+                                    </td>
+                                    {{--  
                                     <td class="text-center">
                                         <br><br>
                                         <div class="d-flex flex-column">
@@ -78,6 +100,7 @@
                                             </div>
                                         </div>
                                     </td>
+                                    --}}
                                     @include('slider.text_modal')
                                     @include('slider.status_modal')
                                     @include('slider.delete_modal')

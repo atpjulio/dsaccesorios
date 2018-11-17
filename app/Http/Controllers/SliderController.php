@@ -59,7 +59,9 @@ class SliderController extends Controller
      */
     public function show($id)
     {
-        //
+        $sliderImage = SliderImage::findOrFail($id);
+
+        return view('slider.show_modal', compact('sliderImage'));
     }
 
     /**
