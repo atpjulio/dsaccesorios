@@ -165,6 +165,14 @@ class FrontEndController extends Controller
 
         Utilities::sendEmail($user, $subject, $content);
 
+        $subject = 'Tienes un nuevo subscriptor!';
+        $user['email'] = config('constants.companyInfo.email');
+        $content = 'Hola,<br><br>Se acaba de suscribir una persona con el siguiente email:<br><br>'.$request->get('email').'<br><br>Ya le fue enviado el email de bienvenida de manera automática'.
+            '<br><br>Van hasta el momento <strong>'.Subscription::count().
+            ' subscriptores</strong><br><br>Seguimos creciendo!';
+
+        Utilities::sendEmail($user, $subject, $content);        
+
         Session::flash('message', 'Gracias por suscribirte a '.config('constants.companyInfo.name'));
         return redirect()->back();
     }
