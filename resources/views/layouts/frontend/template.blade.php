@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/regular.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/solid.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animated.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version={{ config('constants.stylesVersion') }}">
 
     <link rel="icon" href="{{ asset('img/favicon.png') }}">    
@@ -55,6 +56,9 @@
             @include('partials.messages_filled')
         </div>
     @endif
+    <a class="animated bounceIn float-ws" href="https://api.whatsapp.com/send?phone=573224375399&text=Hola%20quisiera%20mas%20informacion%20de%20los%20accesorios" target="_blank">
+        <img src="{{ asset('img/wa_logo.png') }}" alt="" height="60" class="my-float-ws">
+    </a>
     @yield('content')
 </main>
 

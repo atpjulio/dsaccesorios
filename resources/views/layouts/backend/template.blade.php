@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="{{ asset('css/fontawesome.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/regular.min.css') }}">
     <link rel="stylesheet" href="{{ asset('css/solid.min.css') }}">
+    <link rel="stylesheet" href="{{ asset('css/animated.css') }}">
     <link rel="stylesheet" href="{{ asset('css/styles.css') }}?version={{ config('constants.stylesVersion') }}">
     <link rel="icon" href="{{ asset('img/favicon.png') }}">
 
