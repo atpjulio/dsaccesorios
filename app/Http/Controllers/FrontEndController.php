@@ -27,7 +27,7 @@ class FrontEndController extends Controller
 
     public function store($id = null)
     {
-        $all = Product::all();
+        $all = Product::existingProducts();
         $categoriesToShow = Category::take(10)
             ->get()
             ->pluck('name', 'id');
@@ -179,6 +179,32 @@ class FrontEndController extends Controller
 
     public function payCart(CartPaymentRequest $request)
     {
+        $shoppingCart = session('shoppingCart') ?: [];
+        if (!auth()->check() or count($shoppingCart) == 0) {
+            Session::flash('message_danger', 'No se puede acceder a la información del pedido');
+            return redirect()->route('cart');
+        }
+
+        foreach ($shoppingCart as $key => $productArray) {
+            $product = Product::getProductById(key($productArray));
+            if (!$product) {
+                break;
+            }
+            if (reset($productArray) > $product->quantity) {
+                $arrayShoppingCart = [
+                    $product->id => reset($productArray) - $product->quantity 
+                ];
+
+                $currentCart = session('shoppingCart');
+                $currentCart = $this->substractItemFromShoppingCart($currentCart, $arrayShoppingCart);
+                session(['shoppingCart' => $currentCart]);
+
+                Session::flash('message_warning', 'Oh! Solo disponemos de '.$product->quantity.
+                ' unidad(es) para el producto: '.$product->name.'<br>Tu carrito ha sido actualizado');
+                return redirect()->back()->withInput();
+            }
+        }
+
         if (auth()->check()) {
             return redirect()->route('pay.cart.confirm');
         }
@@ -198,7 +224,6 @@ class FrontEndController extends Controller
             Session::flash('message_danger', 'No se puede acceder a la confirmación del pedido');
             return redirect()->route('cart');
         }
-//        Session::flash('message_warning', 'Se enviará el pedido a su correo como aval de la compra y uno de nuestros agentes de venta le estará contactando a su correo o en su defecto al número de celular guardado en el sistema');
         return view('cart_confirm', compact('shoppingCart', 'show'));
     }
 

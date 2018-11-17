@@ -28,19 +28,21 @@
         </td>
         <td colspan="2"><h5>$ {!! number_format($total, 2, ",", ".") !!}</h5></td>
     </tr>
+    {{-- 
     <tr>
         <td colspan="3" style="border-left-width: 0;">
             <h5>Costo de envío</h5>
         </td>
         <td colspan="2"><h5>$ 10.000,00</h5></td>
     </tr>
+    --}}
     <tr>
         <td colspan="3" style="border-left-width: 0;">
             <h5>Total a pagar</h5>
         </td>
         <td colspan="2">
             <h5>
-                <strong>$ {!! number_format($total + 10000, 2, ",", ".") !!}</strong>
+                <strong>$ {!! number_format($total, 2, ",", ".") !!}</strong>
             </h5>
         </td>
     </tr>

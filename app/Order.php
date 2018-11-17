@@ -98,7 +98,7 @@ class Order extends Model
             }
             $order->sub_total += $product->price * reset($productArray);
             $product->update([
-                'quantity' => $product->quantity
+                'quantity' => $product->quantity - reset($productArray)
             ]);
         }
 
@@ -112,7 +112,7 @@ class Order extends Model
             $order->address_city = $user->address->city;
             $order->address_state = $user->address->state;
         }
-        $order->shipping = 10000;
+        $order->shipping = 0;
         $order->total = $order->sub_total + $order->shipping;
         $order->status = config('constants.transactions.status.unpaid');
         $order->save();
@@ -137,7 +137,7 @@ class Order extends Model
                 "&nbsp;&nbsp;&nbsp;Municipio:".$user->address->city."<br>".
                 "&nbsp;&nbsp;&nbsp;Departamento:".$user->address->state."<br>";                
         }
-        $content .= "</h4>";
+        $content .= "</h4><strong>NOTA:</strong> El precio del envío será actualizado al momento de procesar su compra<br><br>";
 
         Utilities::sendConfirmationOrder($user, $subject, $content, $shoppingCart);
 

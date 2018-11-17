@@ -50,7 +50,7 @@
             </thead>
             <tbody>
                 <tr>
-                    <td style="padding: 10px;background-color:#FFFFFF" align="left;">
+                    <td style="padding: 10px;background-color:#FFFFFF; width: 100%;" align="left">
                     {!! $content !!}
                     <br>
                     <table class="confirm-table">

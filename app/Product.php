@@ -117,7 +117,15 @@ class Product extends Model
     protected function getProductsByCategoryId($id)
     {
         return $this->where('category_id', $id)
+            ->where('quantity', '>', 0)
+            ->where('show', config('constants.status.active'))
             ->get();
     }
 
+    protected function existingProducts()
+    {
+        return $this->where('quantity', '>', 0)
+            ->where('show', config('constants.status.active'))
+            ->get();
+    }
 }
