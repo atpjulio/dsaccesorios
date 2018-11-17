@@ -22,7 +22,7 @@
                     </div>
                 </div>
                 @endif
-                <div class="row">
+                <div class="row px-md-5">
                     <div class="col-xl-4 col-md-6 text-center">
                         <div class="tienda-fondo-color d-flex align-items-center justify-content-center">
                             <div class="productos-color-texto">
@@ -32,9 +32,11 @@
                     </div>                    
                     @if(count($all) > 0)
                     @foreach($all as $one)
-                        <div class="col-xl-4 col-md-6">
+                        <div class="col-xl-4 col-md-6 text-center">
                         {!! Form::open(['route' => 'add.to.cart', 'method' => 'POST']) !!}
-                            <img src="{{ Storage::url($one->picture) }}" class="w-100" style="height: 300px;">
+                            <a href="{{ route('more', $one->id) }}">
+                                <img src="{{ Storage::url($one->picture) }}" style="height: 300px;">
+                            </a>
                             <h4>{!! $one->name !!}</h4>
                             <h3>                                
                                 $ {!! number_format($one->price, 0, ",", ".") !!}
@@ -84,9 +86,11 @@
                     </div>
                     @if (count($categoriesInfo[$key]) > 0)
                     @foreach($categoriesInfo[$key] as $one)
-                        <div class="col-xl-4 col-md-6">
+                        <div class="col-xl-4 col-md-6 text-center">
                         {!! Form::open(['route' => 'add.to.cart', 'method' => 'POST']) !!}
-                            <img src="{{ Storage::url($one->picture) }}" class="w-100" style="height: 300px;">
+                            <a href="{{ route('more', $one->id) }}">
+                                <img src="{{ Storage::url($one->picture) }}" style="height: 300px;">
+                            </a>
                             <h4>{!! $one->name !!}</h4>
                             <h3>                                
                                 $ {!! number_format($one->price, 0, ",", ".") !!}

@@ -21,6 +21,7 @@ Route::view('/terms-and-conditions', 'terms_and_conditions')->name('tac');
 // Route::view('/errors', 'errors.500')->name('errors');
 
 Route::post('/pay-cart', 'FrontEndController@payCart')->name('pay.cart');
+Route::get('/product-detail/{id}', 'ProductController@show');
 Route::get('/pay-cart-confirm', 'FrontEndController@payCartConfirm')->name('pay.cart.confirm');
 Route::post('/pay-cart-process', 'FrontEndController@payCartProcess')->name('pay.cart.process');
 Route::get('/cart', 'FrontEndController@cart')->name('cart');
@@ -34,6 +35,7 @@ Route::get('/substract-from-cart', 'FrontEndController@substractFromCart')->name
 
 Route::middleware(['auth', 'admin'])->group(function () {
 	Route::resource('products', 'ProductController');
+  Route::get('/products-delete/{id}', 'ProductController@delete')->name('products.delete');
 	Route::get('/products-solds', 'ProductController@solds')->name('products.solds');
 	Route::get('/products-likes', 'ProductController@likes')->name('products.likes');
 

@@ -44,8 +44,8 @@
                         </li>
                         <li class="@if(Request::is('products')) active @endif" >
                             <a href="{{ route('products.index') }}">
-                                <i class="fas fa-cog"></i>&nbsp;
-                                Administrar
+                                <i class="fas fa-list"></i>&nbsp;
+                                Listado
                             </a>
                         </li>
                         <li class="@if(Request::is('products-solds')) active @endif" >
@@ -144,8 +144,8 @@
                     <ul class="sidebar-nav">
                         <li class="@if(Request::is('orders')) active @endif" >
                             <a href="{{ route('orders.index') }}">
-                                <i class="fas fa-cog"></i>&nbsp;
-                                Administrar
+                                <i class="fas fa-list"></i>&nbsp;
+                                Listado
                             </a>
                         </li>
                     </ul>

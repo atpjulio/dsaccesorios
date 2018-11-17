@@ -40,7 +40,9 @@
                                 @foreach($products as $product)
                                 <tr>
                                     <td class="text-center">
-                                        <img src="{{ Storage::url($product->picture) }}" alt="" class="rounded" width="50">
+                                        <a href="javascript:showModal('products/{{ $product->id }}')">
+                                            <img src="{{ Storage::url($product->picture) }}" alt="" class="rounded" width="50">
+                                        </a>
                                     </td>
                                     <td>{!! $product->description !!}</td>
                                     <td class="text-center">{!! $product->quantity !!}</td>
@@ -50,13 +52,12 @@
                                         <a href="{{ route('products.edit', $product->id) }}" class="btn btn-pill-left btn-info btn-sm">
                                             Editar
                                         </a>
-                                        <a href="" data-toggle="modal" data-target="#confirm-modal-{{ $product->id }}" class="btn btn-pill-right btn-danger btn-sm">
+                                        <a href="javascript:showModal('products-delete/{{ $product->id }}')" class="btn btn-pill-right btn-danger btn-sm">
                                             Borrar
                                         </a>
                                     @endrole                                            
                                     </td>
                                 </tr>
-                                @include('products.delete_modal')
                                 @endforeach
                                 @endif
                                 </tbody>

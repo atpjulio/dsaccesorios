@@ -13,7 +13,7 @@ class ProductController extends Controller
 {
     public function __construct()
     {
-        $this->middleware(['auth', 'both'], []);
+        $this->middleware(['auth', 'both'], ['except' => ['show']]);
     }
 
     /**
@@ -64,7 +64,9 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        //
+        $product = Product::findOrFail($id);
+
+        return view('products.show_modal', compact('product'));
     }
 
     /**
@@ -130,4 +132,10 @@ class ProductController extends Controller
         return view('products.likes', compact('products'));
     }
 
+    public function delete($id)
+    {
+        $product = Product::findOrFail($id);
+
+        return view('products.delete_modal', compact('product'));
+    }
 }

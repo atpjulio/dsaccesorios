@@ -10,8 +10,10 @@
                 </div>
             </div>
             <div class="row justify-content-center">            
-                <div class="col-sm-4">
-                    <img src="{{ Storage::url($product->picture) }}" class="w-100" style="height: 300px;">
+                <div class="col-sm-4 text-center">
+                    <a href="javascript:showModal('product-detail/{{ $product->id }}')">
+                        <img src="{{ Storage::url($product->picture) }}" style="height: 300px;">
+                    </a>
                 </div>
                 <div class="col-sm-4">
                     <h4>{!! $product->name !!}</h4>
