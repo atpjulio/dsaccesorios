@@ -46,7 +46,12 @@
                                         </a>
                                     </td>
                                     <td>{{ $sliderImage->text ?: '<< Sin texto >>' }}</td>
-                                    <td>{{ $sliderImage->id }}</td>
+                                    <td>
+                                        {!! Form::number('position[]', $sliderImage->id, [
+                                            'class' => 'form-control position', 
+                                            'id' => 'position'.$sliderImage->id,
+                                            'min' => 1
+                                        ]) !!}</td>
                                     <td>
                                         <a href="" data-toggle="modal" data-target="#text-modal-{{ $sliderImage->id }}" class="btn btn-pill-left btn-info btn-sm">
                                             Texto
@@ -115,3 +120,27 @@
     </div>
 </section>
 @endsection
+
+@push('scripts')
+    <script type="text/javascript">
+        $(document).ready(function() {
+            $('.position').on('change', function (e) {
+                // console.log('Change on ');
+                // console.log($(this).attr('id'));
+                // console.log($(this).val());
+                var currentPos = $(this).val();
+
+                var posArray = [];
+
+                $(".position").each(function(currentPos) {
+                    if (currentPos === $(this).val()) {
+                        $(this).val(parseInt($(this).val()) - 1);    
+                    }
+                    posArray.push($(this).val());
+                    console.log($(this).val());
+                });
+
+            });
+        });
+    </script>    
+@endpush

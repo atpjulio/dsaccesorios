@@ -34,6 +34,9 @@
             <h4>
                 Visítanos en Facebook <a href="{{ config('constants.companyInfo.facebook') }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
             </h4>
+            <h4>
+                Contáctanos por WhatsApp <a href="{{ config('constants.companyInfo.whatsapp') }}" target="_blank"><i class="fab fa-whatsapp"></i></a>
+            </h4>
         </div>
     </div>
     <br>

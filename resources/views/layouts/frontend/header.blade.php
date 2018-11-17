@@ -2,6 +2,8 @@
     <a href="{{ config('constants.companyInfo.facebook') }}" target="_blank"><i class="fab fa-facebook-f"></i></a>
     &nbsp;&nbsp;&nbsp;
     <a href="{{ config('constants.companyInfo.instagram') }}" target="_blank"><i class="fab fa-instagram"></i></a>
+    &nbsp;&nbsp;&nbsp;
+    <a href="{{ config('constants.companyInfo.whatsapp') }}" target="_blank"><i class="fab fa-whatsapp"></i></a>
 </div>
 <img src="{{ asset('img/Header.png') }}" class="img-fluid">
 <!-- Fixed navbar -->

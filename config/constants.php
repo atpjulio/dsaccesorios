@@ -9,7 +9,7 @@ $myConstants = [
         1 => 'Si',
         0 => 'No',
     ],
-    'stylesVersion' => '1.009',
+    'stylesVersion' => '1.010',
     'productImages' => 'public/img/products/',
     'sliderImages' => '/img/slider/',
     'usersImages' => '/img/users/',
@@ -98,6 +98,7 @@ $myConstants = [
         'longLogo' => 'http://dsaccesorios365.com/img/favicon.png',
         'instagram' => 'https:/www.instagram.com/ds_accesorios365/',
         'facebook' => 'https://www.facebook.com/DS-Accesorios365-2363862887174535/',
+        'whatsapp' => 'https://api.whatsapp.com/send?phone=573224375399&text=Hola%20quisiera%20mas%20informacion%20de%20los%20accesorios',
         'nit' => '1102810296-1',
         'address' => 'Calle 25 #24 - 65 Casa 11'
     ],
