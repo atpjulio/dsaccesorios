@@ -2,6 +2,15 @@
 
 @push('styles')
     <link rel="stylesheet" href="{{asset('css/dataTables.bootstrap.min.css')}}">
+    <style>
+        input::-webkit-outer-spin-button,
+        input::-webkit-inner-spin-button {
+            display: none;
+        }
+        .operations {
+            font-size: 20px;
+        }
+    </style>
 @endpush
 
 @section('content')
@@ -25,7 +34,18 @@
             <div class="card">
                 <div class="card-block">
                     <div class="card-title-block">
-                        <h3 class="title"> Imágenes guardadas en el sistema </h3>
+                        <div class="float-left">
+                            <h3 class="title"> Imágenes guardadas en el sistema </h3>
+                        </div>
+                        <div class="float-right" id="change-order" style="display: none;">
+                            {!! Form::open(['route' => 'slider.change.order', 'method' => 'POST', 'id' => 'order-form']) !!}
+                                <button type="submit" class="btn btn-oval btn-secondary">
+                                    <i class="fa fa-pen"></i>
+                                    Cambiar orden
+                                </button>
+                                {!! Form::hidden('order', '', ['id' => 'order']) !!}
+                            {!! Form::close() !!}
+                        </div>
                     </div>
                     <div class="table-responsive">
                         <table class="table table-striped table-bordered table-condensed table-hover">
@@ -38,6 +58,9 @@
                                 </tr>
                             </thead>
                             <tbody>
+                            @php
+                                $counter = 0;
+                            @endphp
                             @foreach ($sliderImages as $sliderImage)
                                 <tr>
                                     <td class="text-center">
@@ -47,11 +70,20 @@
                                     </td>
                                     <td>{{ $sliderImage->text ?: '<< Sin texto >>' }}</td>
                                     <td>
-                                        {!! Form::number('position[]', $sliderImage->id, [
+                                        {!! Form::number('position[]', $sliderImage->position, [
                                             'class' => 'form-control position', 
-                                            'id' => 'position'.$sliderImage->id,
-                                            'min' => 1
-                                        ]) !!}</td>
+                                            'id' => 'position'.$counter,
+                                            'min' => 1,
+                                            'max' => count($sliderImages),
+                                            'style' => 'display: inline; width: 40px; background-color: #ccc;',
+                                            'readonly'
+                                        ]) !!}
+                                        <a href="javascript:incrementPosition({{ $counter }})" class="text-info operations"><i class="fa fa-plus-circle"></i></a>
+                                        &nbsp;
+                                        <a href="javascript:decrementPosition({{ $counter }})" class="text-danger operations">
+                                            <i class="fas fa-minus-circle"></i>
+                                        </a>
+                                    </td>
                                     <td>
                                         <a href="" data-toggle="modal" data-target="#text-modal-{{ $sliderImage->id }}" class="btn btn-pill-left btn-info btn-sm">
                                             Texto
@@ -70,42 +102,9 @@
                                         </a>
                                         
                                     </td>
-                                    {{--  
-                                    <td class="text-center">
-                                        <br><br>
-                                        <div class="d-flex flex-column">
-                                            <div class="p-2 bd-highlight">
-                                                <a href="" data-toggle="modal" data-target="#text-modal-{{ $sliderImage->id }}">
-                                                    <h1 class="text-success">
-                                                        <i class="fas fa-pencil-alt"></i>
-                                                    </h1>
-                                                </a>
-                                            </div>
-                                            <div class="p-2 bd-highlight">
-                                                @if ($sliderImage->status == config('constants.status.active'))
-                                                <a href="" data-toggle="modal" data-target="#status-modal-{{ $sliderImage->id }}">
-                                                    <h1 class="text-primary">
-                                                        <i class="far fa-eye"></i>
-                                                    </h1>
-                                                </a>
-                                                @else
-                                                <a href="" data-toggle="modal" data-target="#status-modal-{{ $sliderImage->id }}">
-                                                    <h1 class="text-warning">
-                                                        <i class="far fa-eye-slash"></i>
-                                                    </h1>
-                                                </a>
-                                                @endif
-                                            </div>
-                                            <div class="p-2 bd-highlight">
-                                                <a href="" data-toggle="modal" data-target="#confirm-modal-{{ $sliderImage->id }}">
-                                                    <h1 class="text-danger">
-                                                        <i class="fas fa-trash-alt"></i>
-                                                    </h1>
-                                                </a>
-                                            </div>
-                                        </div>
-                                    </td>
-                                    --}}
+                                    @php
+                                        $counter++;
+                                    @endphp                                    
                                     @include('slider.text_modal')
                                     @include('slider.status_modal')
                                     @include('slider.delete_modal')
@@ -123,24 +122,60 @@
 
 @push('scripts')
     <script type="text/javascript">
+        var valuesArray = [];
+        var show = false;
         $(document).ready(function() {
-            $('.position').on('change', function (e) {
-                // console.log('Change on ');
-                // console.log($(this).attr('id'));
-                // console.log($(this).val());
-                var currentPos = $(this).val();
-
-                var posArray = [];
-
-                $(".position").each(function(currentPos) {
-                    if (currentPos === $(this).val()) {
-                        $(this).val(parseInt($(this).val()) - 1);    
-                    }
-                    posArray.push($(this).val());
-                    console.log($(this).val());
+            if (valuesArray.length == 0) {
+                $(".position").each(function(index, value) {                    
+                    valuesArray.push(value.value);
                 });
-
-            });
+            }
         });
+
+        function incrementPosition(currentId) {
+            var currentValue = parseInt($('#position' + currentId).val());
+            if (currentValue >= valuesArray.length) {
+                return;
+            }
+            if (!show) {
+                $('#change-order').css({'display': 'block'});
+                $('#order-form').addClass('animated fadeInRight');
+                show = true;
+            }
+
+            $('#position' + currentId).val(++currentValue);
+            $(".position").each(function(index, element) {
+                var value = parseInt($('#position' + index).val());
+                if (index !== currentId && value === currentValue) {
+                    $('#position' + index).val(currentValue - 1);
+                    valuesArray[index] = currentValue - 1;
+                }
+            });
+            valuesArray[currentId] = currentValue;
+            $('#order').val(valuesArray);
+        }
+
+        function decrementPosition(currentId) {
+            var currentValue = parseInt($('#position' + currentId).val());
+            if (currentValue <= 1) {
+                return;
+            }
+            if (!show) {
+                $('#change-order').css({'display': 'block'});
+                $('#order-form').addClass('animated fadeInRight');
+                show = true;
+            }
+
+            $('#position' + currentId).val(--currentValue);
+            $(".position").each(function(index, element) {
+                var value = parseInt($('#position' + index).val());
+                if (index !== currentId &&  value === currentValue) {
+                    $('#position' + index).val(currentValue + 1);
+                    valuesArray[index] = currentValue + 1;
+                }
+            });
+            valuesArray[currentId] = currentValue;
+            $('#order').val(valuesArray);
+        }
     </script>    
 @endpush

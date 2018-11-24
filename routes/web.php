@@ -38,7 +38,10 @@ Route::middleware(['auth', 'admin'])->group(function () {
 
   Route::get('/user/delete/{id}', 'UserController@delete')->name('user.delete');
   Route::resource('users', 'UserController');
+
 	Route::resource('slider', 'SliderController');
+  Route::post('slider-change-order', 'SliderController@changeOrder')->name('slider.change.order');
+
   Route::resource('category', 'CategoryController');
   Route::resource('bulletin', 'BulletinController');
 	Route::get('/bulletin-delete/{id}', 'BulletinController@delete')->name('bulletin.delete');

@@ -111,6 +111,10 @@ $myConstants = [
         'defaultEmail' => 'sin_correo0@ejemplo.com',
         'notes' => 'Cliente importado desde correo Gmail',
     ],
+    'payu' => [
+        'sandbox' => 'https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu',
+        'production' => 'https://checkout.payulatam.com/ppp-web-gateway-payu',
+    ],
 ];
 
 return $myConstants;

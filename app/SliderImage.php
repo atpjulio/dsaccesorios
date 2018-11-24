@@ -20,6 +20,7 @@ class SliderImage extends Model
     protected function onlyVisibleImages()
     {
     	return $this->where('status', config('constants.status.active'))
+            ->orderBy('position')
     		->get();
     }
 

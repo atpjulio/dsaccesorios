@@ -101,6 +101,7 @@ class User extends Authenticatable
         $user->first_name = $request->get('first_name');
         $user->last_name = $request->get('last_name');
         $user->email = $request->get('email');
+        $user->password = bcrypt($user->email);
         $user->user_type = $request->get('user_type');
         $user->purchases = $request->get('purchases');
         $user->dni_type = $request->get('dni_type');
@@ -111,11 +112,11 @@ class User extends Authenticatable
 
         $address = new Address();
 
-        $address->address = $request->get('address');
+        $address->address1 = $request->get('address');
         $address->address2 = $request->get('address2');
         $address->city = $request->get('city');
         $address->state = $request->get('state');
-        $address->zip = $request->get('zip');
+        // $address->zip = $request->get('zip');
 
         $user->address()->save($address);
 
@@ -142,16 +143,14 @@ class User extends Authenticatable
 
         $user->save();
 
-        $address = $user->address;
-        if ($address) {
-            $address->address = $request->get('address');
-            $address->address2 = $request->get('address2');
-            $address->city = $request->get('city');
-            $address->state = $request->get('state');
-            $address->zip = $request->get('zip');
+        $address = new Address();
+        $address->address1 = $request->get('address');
+        $address->address2 = $request->get('address2');
+        $address->city = $request->get('city');
+        $address->state = $request->get('state');
+        // $address->zip = $request->get('zip');
 
-            $user->address()->save($address);
-        }
+        $user->address()->save($address);
 
         $phone = $user->phone;
         if ($phone) {

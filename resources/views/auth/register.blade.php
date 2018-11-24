@@ -47,15 +47,17 @@
                             <div class="col-sm-6">
                                 <div class="form-group  @if($errors->has('state')) is-invalid @endif">
                                     {!! Form::label('state', 'Departamento', ['class' => 'control-label']) !!}
-                                    {!! Form::select('state', \App\State::getStates(), old('state'), ['class' => 'form-control']) !!}
+                                    {!! Form::select('state', \App\State::getStates(), old('state', '08'), ['class' => 'form-control']) !!}
                                 </div>
                             </div>
+                            {{--  
                             <div class="col-sm-6">
                                 <div class="form-group @if($errors->has('zip')) is-invalid @endif)">
                                     {!! Form::label('zip', 'Código Postal', ['class' => 'control-label']) !!}
                                     {!! Form::text('zip', old('zip'), ['class' => 'form-control', 'placeholder' => 'Código Postal', 'maxlength' => 5]) !!}
                                 </div>
                             </div>
+                            --}}
                             <div class="col-sm-6">
                                 <div class="form-group @if($errors->has('phone')) is-invalid @endif)">
                                     {!! Form::label('phone', 'Número de celular', ['class' => 'control-label']) !!}
@@ -68,7 +70,7 @@
                                     <input id="email" type="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" name="email" value="{{ old('email') }}" placeholder="correo@ejemplo.com" required>
                                 </div>
                             </div>
-                            <div class="col-sm-6"></div>
+                            {{--  <div class="col-sm-6"></div> --}}
                             <div class="col-sm-6">
                                 <div class="form-group @if($errors->has('password')) is-invalid @endif)">
                                     {!! Form::label('password', 'Contraseña', ['class' => 'control-label']) !!}

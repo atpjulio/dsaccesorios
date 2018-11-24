@@ -33,7 +33,7 @@
         <div class="card-block">
 			<div class="form-group @if($errors->has('purchases')) has-error @endif">
 			    {!! Form::label('purchases', 'Compras realizadas', ['class' => 'control-label']) !!}
-			    {!! Form::number('purchases', old('purchases', isset($user) ? $user->purchases : ''), ['class' => 'form-control underlined', 'placeholder' => 'Compras realizadas', 'min' => 0]) !!}
+			    {!! Form::number('purchases', old('purchases', isset($user) ? $user->purchases : 0), ['class' => 'form-control underlined', 'placeholder' => 'Compras realizadas', 'min' => 0]) !!}
 			</div>
             <div class="form-group @if($errors->has('address')) has-error @endif">
                 {!! Form::label('address', 'Dirección', ['class' => 'control-label']) !!}
@@ -46,15 +46,17 @@
             <div class="form-group @if($errors->has('city')) has-error @endif">
                 {!! Form::label('city', 'Municipio', ['class' => 'control-label']) !!}
                 {!! Form::text('city', old('city', (isset($user) and $user->address) ? $user->address->city : ''), ['class' => 'form-control underlined', 'placeholder' => 'Dirección - Continuación']) !!}
-            </div>
+            </div>         
             <div class="form-group  @if($errors->has('state')) has-error @endif">
                 {!! Form::label('state', 'Departamento', ['class' => 'control-label']) !!}
-                {!! Form::select('state', \App\State::getStates(), old('state', (isset($user) and $user->address) ? $user->address->state : ''), ['class' => 'form-control']) !!}
+                {!! Form::select('state', \App\State::getStates(), old('state', (isset($user) and $user->address) ? $user->address->state : '08'), ['class' => 'form-control']) !!}
             </div>
+            {{--  
 			<div class="form-group @if($errors->has('zip')) has-error @endif">
 			    {!! Form::label('zip', 'Código postal', ['class' => 'control-label']) !!}
 			    {!! Form::text('zip', old('zip', (isset($user) and $user->address) ? $user->address->zip : ''), ['class' => 'form-control underlined', 'placeholder' => 'Notas']) !!}
 			</div>
+        	--}}
         </div>
     </div>
 </div>

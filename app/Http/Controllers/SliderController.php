@@ -112,4 +112,17 @@ class SliderController extends Controller
         Session::flash("message", "Imagen borrada del sistema");
         return redirect()->route('slider.index');
     }
+
+    public function changeOrder(Request $request) {
+
+        $sliderImages = SliderImage::all();
+
+        foreach ($sliderImages as $key => $sliderImage) {
+            $sliderImage->update([
+                'position' => explode(",", $request->get('order'))[$key]
+            ]);
+        }        
+        Session::flash("message", "Orden de las fotos actualizado");
+        return redirect()->route('slider.index');
+    }
 }
