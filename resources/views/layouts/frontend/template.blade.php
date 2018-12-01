@@ -43,6 +43,17 @@
     <meta property="og:description" content="{{ config('constants.companyInfo.description') }}" />
     <meta property="og:type" content="website" />
     <meta property="og:site_name" content="{{ config('constants.companyInfo.name') }}" />
+    @if (env('PRODUCTION'))
+        <!-- Global site tag (gtag.js) - Google Analytics -->
+        <script async src="https://www.googletagmanager.com/gtag/js?id=UA-130230396-1"></script>
+        <script>
+          window.dataLayer = window.dataLayer || [];
+          function gtag(){dataLayer.push(arguments);}
+          gtag('js', new Date());
+
+          gtag('config', 'UA-130230396-1');
+        </script>    
+    @endif
 </head>
 <body>
 <header>
