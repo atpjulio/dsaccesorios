@@ -71,28 +71,35 @@ class RegisterController extends Controller
      */
     protected function create(array $data)
     {
-        $user = User::create([
-            'first_name' => $data['first_name'],
-            'last_name' => $data['last_name'],
-            'email' => $data['email'],
-            'password' => Hash::make($data['password']),
-        ]);
+        try {
+            \DB::beginTransaction();
 
-        Address::create([
-            'user_id' => $user->id,
-            'address' => $data['address'],
-            'address2' => $data['address2'],
-            'city' => $data['city'],
-            'state' => $data['state'],
-            'zip' => $data['zip'],
-        ]);
+            $user = User::create([
+                'first_name' => $data['first_name'],
+                'last_name' => $data['last_name'],
+                'email' => $data['email'],
+                'password' => Hash::make($data['password']),
+            ]);
 
-        Phone::create([
-            'user_id' => $user->id,
-            'phone' => $data['phone'],
-        ]);
+            Address::create([
+                'user_id' => $user->id,
+                'address' => $data['address'],
+                'address2' => isset($data['address2']) ? $data['address2'] : '',
+                'city' => $data['city'],
+                'state' => $data['state'],
+                'zip' => isset($data['zip']) ? $data['zip'] : '',
+            ]);
 
-        $user->assignRole(config('constants.userRolesString')[config('constants.userRoles.user')]);
+            Phone::create([
+                'user_id' => $user->id,
+                'phone' => $data['phone'],
+            ]);
+
+            $user->assignRole(config('constants.userRolesString')[config('constants.userRoles.user')]);
+            \DB::commit();
+        } catch (\Exception $e) {
+            \DB::rollback();
+        }
 
         return $user;
     }
