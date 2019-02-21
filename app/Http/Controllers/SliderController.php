@@ -44,7 +44,7 @@ class SliderController extends Controller
         $fileName = time().'_'.$file->getClientOriginalName();
 
         $file->move(public_path().config('constants.sliderImages'), $fileName);
-
+        
         SliderImage::storeRecord($fileName, $request->get('text'));
 
         Session::flash("message", "Imagen subida exitosamente");

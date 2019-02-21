@@ -35,7 +35,7 @@
                         <div class="col-xl-4 col-md-6 text-center">
                         {!! Form::open(['route' => 'add.to.cart', 'method' => 'POST']) !!}
                             <a href="{{ route('more', $one->id) }}">
-                                <img src="{{ Storage::url($one->picture) }}" style="height: 300px;">
+                                <img src="{{ Storage::url($one->picture) }}" style="height: 300px; max-width: 100%;">
                             </a>
                             <h4>{!! $one->name !!}</h4>
                             <h3>                                
@@ -89,7 +89,7 @@
                         <div class="col-xl-4 col-md-6 text-center">
                         {!! Form::open(['route' => 'add.to.cart', 'method' => 'POST']) !!}
                             <a href="{{ route('more', $one->id) }}">
-                                <img src="{{ Storage::url($one->picture) }}" style="height: 300px;">
+                                <img src="{{ Storage::url($one->picture) }}" style="height: 300px; max-width: 100%;">
                             </a>
                             <h4>{!! $one->name !!}</h4>
                             <h3>                                

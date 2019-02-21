@@ -10,6 +10,7 @@ $myConstants = [
         0 => 'No',
     ],
     'stylesVersion' => '1.011',
+    'productImage' => 'public/img/products',
     'productImages' => 'public/img/products/',
     'sliderImages' => '/img/slider/',
     'usersImages' => '/img/users/',

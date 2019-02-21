@@ -56,7 +56,7 @@ class Product extends Model
         if ($request->hasFile('picture')) {
             $file = $request->file('picture');
             $fileName = time().'_'.$file->getClientOriginalName();
-            $product->picture = Storage::put(config('constants.productImages'), $file);
+            $product->picture = Storage::put(config('constants.productImage'), $file);
         }
 
         $product->save();
@@ -88,7 +88,7 @@ class Product extends Model
 
             Storage::delete($oldImage);
 
-            $product->picture = Storage::put(config('constants.productImages'), $file);
+            $product->picture = Storage::put(config('constants.productImage'), $file);
         }
 
         $product->save();
