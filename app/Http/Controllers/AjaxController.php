@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Product;
 
 class AjaxController extends Controller
 {
@@ -39,4 +40,9 @@ class AjaxController extends Controller
         return $shoppingCart;
     }
 
+    public function getProducts($search)
+    {
+        $products = Product::searchRecords($search);
+        return view('partials._products', compact('products'));
+    }
 }

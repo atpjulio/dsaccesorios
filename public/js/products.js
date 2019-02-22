@@ -60,7 +60,7 @@
 /******/ 	__webpack_require__.p = "/";
 /******/
 /******/ 	// Load entry module and return exports
-/******/ 	return __webpack_require__(__webpack_require__.s = 0);
+/******/ 	return __webpack_require__(__webpack_require__.s = 1);
 /******/ })
 /************************************************************************/
 /******/ ({
@@ -47304,13 +47304,6 @@ module.exports = function(module) {
 
 /***/ }),
 
-/***/ "./public/css/styles.scss":
-/***/ (function(module, exports) {
-
-// removed by extract-text-webpack-plugin
-
-/***/ }),
-
 /***/ "./resources/assets/js/app.js":
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -47458,19 +47451,29 @@ module.exports = Component.exports
 
 /***/ }),
 
-/***/ "./resources/assets/sass/app.scss":
-/***/ (function(module, exports) {
+/***/ "./resources/assets/js/products.js":
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
 
-// removed by extract-text-webpack-plugin
+"use strict";
+Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
+/* harmony import */ var __WEBPACK_IMPORTED_MODULE_0__app_js__ = __webpack_require__("./resources/assets/js/app.js");
+
+
+$(document).ready(function () {
+    $('#searching').on('change keyup', function (e) {
+        console.log('working');
+        if ($('#searching').val().length > 2) {
+            Object(__WEBPACK_IMPORTED_MODULE_0__app_js__["fillProducts"])($('#searching').val());
+        }
+    });
+});
 
 /***/ }),
 
-/***/ 0:
+/***/ 1:
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__("./resources/assets/js/app.js");
-__webpack_require__("./resources/assets/sass/app.scss");
-module.exports = __webpack_require__("./public/css/styles.scss");
+module.exports = __webpack_require__("./resources/assets/js/products.js");
 
 
 /***/ })

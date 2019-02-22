@@ -128,4 +128,14 @@ class Product extends Model
             ->where('show', config('constants.status.active'))
             ->get();
     }
+
+    protected function searchRecords($search = '')
+    {
+        $query = $this->where('name', 'like', '%'.$search.'%')
+            ->orWhere('description', 'like', '%'.$search.'%');
+            
+        return $query->orderBy('name', 'DESC')
+            ->paginate(config('constants.pagination'));
+    }
+
 }

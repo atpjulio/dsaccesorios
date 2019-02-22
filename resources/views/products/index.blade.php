@@ -23,47 +23,17 @@
             <div class="col-md-12">
                 <div class="card">
                     <div class="card-block">
-                        <div class="card-title-block">
-                            <h3 class="title"> Productos registrados en el sistema </h3>
+                        <div class="card-title-block">                            
+                            <div class="float-left">
+                                <h3 class="title"> Productos registrados en el sistema </h3>
+                              </div>
+                              <div class="dataTables_filter float-right form-inline mb-3 mt-0">
+                                    <label class="mr-2">Buscar:</label>
+                                    <input type="search" class="form-control form-control-sm" placeholder="" id="searching">
+                              </div>  
                         </div>
-                        <div class="table-responsive">
-                            <table class="table table-striped table-bordered table-condensed table-hover" id="myTable">
-                                <thead>
-                                <th style="width: 50px;">Imagen</th>
-                                <th class="">Nombre</th>
-                                <th class="">Descripción</th>
-                                <th style="width: 60px;">Disponibles</th>
-                                <th style="width: 60px;">Vendidos</th>
-                                <th style="width: 103px;">Opciones</th>
-                                </thead>
-                                <tbody>
-                                @if(count($products) > 0)
-                                @foreach($products as $product)
-                                <tr>
-                                    <td class="text-center">
-                                        <a href="javascript:showModal('products/{{ $product->id }}')">
-                                            <img src="{{ Storage::url($product->picture) }}" alt="" class="rounded" width="50">
-                                        </a>
-                                    </td>
-                                    <td>{!! $product->name !!}</td>
-                                    <td>{!! $product->description !!}</td>
-                                    <td class="text-center">{!! $product->quantity !!}</td>
-                                    <td class="text-center">{!! $product->counter !!}</td>
-                                    <td>
-                                    @role('admin')
-                                        <a href="{{ route('products.edit', $product->id) }}" class="btn btn-pill-left btn-info btn-sm">
-                                            Editar
-                                        </a>
-                                        <a href="javascript:showModal('products-delete/{{ $product->id }}')" class="btn btn-pill-right btn-danger btn-sm">
-                                            Borrar
-                                        </a>
-                                    @endrole                                            
-                                    </td>
-                                </tr>
-                                @endforeach
-                                @endif
-                                </tbody>
-                            </table>
+                        <div id="dynamic-products">
+                            @include('partials._products')
                         </div>
                     </div>
                 </div>
@@ -73,6 +43,8 @@
 @endsection
 
 @push('scripts')
+    <script src="{{ mix('js/products.js')}}"></script>
+    {{-- 
     <script src="{{asset('js/jquery.dataTables.min.js')}}"></script>
     <script src="{{asset('js/dataTables.bootstrap.min.js')}}"></script>
     <script>
@@ -96,4 +68,5 @@
             });
         } );
     </script>
+    --}}
 @endpush

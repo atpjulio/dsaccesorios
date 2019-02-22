@@ -72,7 +72,7 @@ $myConstants = [
         'active' => 1,
         'inactive' => 9,
     ],
-    'pagination' => 1000,
+    'pagination' => 30,
     'documentTypes' => [
         "CC" => "Cédula de Ciudadanía",
         "CE" => "Cédula de Extranjería",
