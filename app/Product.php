@@ -136,7 +136,7 @@ class Product extends Model
         $query = $this->where('name', 'like', '%'.$search.'%')
             ->orWhere('description', 'like', '%'.$search.'%');
             
-        return $query->orderBy('name', 'DESC')
+        return $query->latest('updated_at')
             ->paginate(config('constants.pagination'));
     }
 
