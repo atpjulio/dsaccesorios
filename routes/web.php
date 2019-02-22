@@ -71,4 +71,4 @@ Auth::routes();
 Route::get('/home', 'HomeController@index')->name('home');
 
 Route::get('/set-to-cart', 'AjaxController@setToCart')->name('set.to.cart');
-Route::get('/get-products', 'AjaxController@getProducts')->name('get.products');
+Route::get('/get-products/{search}', 'AjaxController@getProducts')->name('get.products');
