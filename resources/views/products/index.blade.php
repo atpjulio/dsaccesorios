@@ -30,6 +30,7 @@
                             <table class="table table-striped table-bordered table-condensed table-hover" id="myTable">
                                 <thead>
                                 <th style="width: 50px;">Imagen</th>
+                                <th class="">Nombre</th>
                                 <th class="">Descripción</th>
                                 <th style="width: 60px;">Disponibles</th>
                                 <th style="width: 60px;">Vendidos</th>
@@ -44,6 +45,7 @@
                                             <img src="{{ Storage::url($product->picture) }}" alt="" class="rounded" width="50">
                                         </a>
                                     </td>
+                                    <td>{!! $product->name !!}</td>
                                     <td>{!! $product->description !!}</td>
                                     <td class="text-center">{!! $product->quantity !!}</td>
                                     <td class="text-center">{!! $product->counter !!}</td>

@@ -64,7 +64,11 @@ class ProductController extends Controller
      */
     public function show($id)
     {
-        $product = Product::findOrFail($id);
+        $product = Product::find($id);
+        if (!$product) {
+            Session::flash('message_warning', 'Ups! No se pudo mostrar el producto. Inténtalo nuevamente');
+            return redirect()->back();
+        } 
 
         return view('products.show_modal', compact('product'));
     }
@@ -79,6 +83,10 @@ class ProductController extends Controller
     {
         $categories = Category::all()->pluck('name', 'id');
         $product = Product::find($id);
+        if (!$product) {
+            Session::flash('message_warning', 'Ups! No se pudo mostrar el producto. Inténtalo nuevamente');
+            return redirect()->back();
+        } 
 
         return view('products.edit', compact('categories', 'product'));
     }
@@ -111,9 +119,13 @@ class ProductController extends Controller
         if (auth()->user()->hasRole('admin')) {
             $product = Product::find($id);
 
-            $product->delete();
+            if (!$product) {
+                Session::flash('message_warning', 'Ups! Parece que el producto ya ha sido eliminado');
+            } else {
+                $product->delete();
+                Session::flash('message', 'Producto eliminado exitosamente');
+            }
 
-            Session::flash('message', 'Producto eliminado exitosamente');
             return redirect()->route('products.index');
         }
     }

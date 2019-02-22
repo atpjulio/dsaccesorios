@@ -47,6 +47,10 @@ class FrontEndController extends Controller
         $cartQuantity = $request->get('quantity') ?: 0;
 
         $product = Product::find($id);
+        if (!$product) {
+            Session::flash('message_warning', 'Ups! No se pudo mostrar el producto. Inténtalo nuevamente');
+            return redirect()->back();
+        } 
 
         return view('more', compact('product', 'cartQuantity'));
     }
