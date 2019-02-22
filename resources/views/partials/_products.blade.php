@@ -6,7 +6,7 @@
         <th class="">Descripción</th>
         <th style="width: 60px;">Disponibles</th>
         <th style="width: 60px;">Vendidos</th>
-        <th style="width: 103px;">Opciones</th>
+        <th style="width: 150px;">Opciones</th>
         </thead>
         <tbody>
         @if(count($products) > 0)
