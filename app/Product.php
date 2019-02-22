@@ -119,6 +119,7 @@ class Product extends Model
         return $this->where('category_id', $id)
             ->where('quantity', '>', 0)
             ->where('show', config('constants.status.active'))
+            ->latest('updated_at')
             ->get();
     }
 
