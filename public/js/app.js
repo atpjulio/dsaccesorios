@@ -47315,8 +47315,6 @@ module.exports = function(module) {
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
-Object.defineProperty(__webpack_exports__, "__esModule", { value: true });
-/* harmony export (immutable) */ __webpack_exports__["fillProducts"] = fillProducts;
 
 /**
  * First we will load all of this project's JavaScript dependencies which
@@ -47336,14 +47334,8 @@ window.Vue = __webpack_require__("./node_modules/vue/dist/vue.common.js");
 
 Vue.component('example-component', __webpack_require__("./resources/assets/js/components/ExampleComponent.vue"));
 
-function fillProducts(search) {
-    $.get("/get-products/" + search, function (data, status) {
-        $('#dynamic-products').html(data);
-    });
-}
-
 var app = new Vue({
-    el: '#app'
+  el: '#app'
 });
 
 /***/ }),

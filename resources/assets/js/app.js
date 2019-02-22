@@ -17,12 +17,6 @@ window.Vue = require('vue');
 
 Vue.component('example-component', require('./components/ExampleComponent.vue'));
 
-export function fillProducts(search)
-{
-    $.get("/get-products/" + search, function (data, status) {
-        $('#dynamic-products').html(data);
-    });
-}
 
 const app = new Vue({
     el: '#app'
