@@ -32,6 +32,11 @@ class HomeController extends Controller
             return redirect()->route('cart');
         }
 
+        if (session()->has('fromShoppingCart')) {
+            session()->forget('fromShoppingCart');
+
+            return redirect()->route('cart');
+        }
         return view('home');
     }
 

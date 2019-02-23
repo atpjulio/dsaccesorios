@@ -184,9 +184,14 @@ class FrontEndController extends Controller
     public function payCart(CartPaymentRequest $request)
     {
         $shoppingCart = session('shoppingCart') ?: [];
-        if (!auth()->check() or count($shoppingCart) == 0) {
+        if (count($shoppingCart) == 0) {
             Session::flash('message_danger', 'No se puede acceder a la información del pedido');
             return redirect()->route('cart');
+        }
+        if (!auth()->check()) {
+            session(['fromShoppingCart' => 1]);
+            Session::flash('message', 'Ingresa a tu cuenta para poder pagar el pedido');
+            return redirect()->route('login');
         }
 
         foreach ($shoppingCart as $key => $productArray) {
