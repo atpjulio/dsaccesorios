@@ -11,6 +11,6 @@
     {!! Form::number('price', old('price', isset($product) ? $product->price : ''), ['class' => 'form-control underlined', 'placeholder' => 'Precio sin envío', 'min' => '0']) !!}
 </div>
 <div class="form-group @if($errors->has('show')) has-error @endif">
-    {!! Form::label('show', '¿Mostrar en la página principal?', ['class' => 'control-label']) !!}
+    {!! Form::label('show', '¿Mostrar en la tienda?', ['class' => 'control-label']) !!}
     {!! Form::select('show', config('constants.yesNo'), old('show', isset($product) ? $product->show : ''), ['class' => 'form-control']) !!}
 </div>

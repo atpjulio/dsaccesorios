@@ -1,6 +1,9 @@
 @extends('layouts.frontend.template')
 
 @section('content')
+    @php
+        use Illuminate\Support\Str;    
+    @endphp
     <div class="container">
         <ul class="nav nav-tabs" id="myTab" role="tablist">
             <li class="nav-item">
@@ -8,7 +11,7 @@
             </li>
             @foreach ($categoriesToShow as $key => $categoryName)
             <li class="nav-item">
-                <a class="nav-link tab-link @if($id == strtolower($categoryName)) active @endif" id="{{ strtolower($categoryName) }}-tab" data-toggle="tab" href="#{{ strtolower($categoryName) }}" role="tab" aria-controls="{{ strtolower($categoryName) }}" aria-selected="false">{{ $categoryName }}</a>
+                <a class="nav-link tab-link @if($id == strtolower($categoryName)) active @endif" id="{{ Str::slug($categoryName, '-') }}-tab" data-toggle="tab" href="#{{ Str::slug($categoryName, '-') }}" role="tab" aria-controls="{{ strtolower($categoryName) }}" aria-selected="false">{{ $categoryName }}</a>
             </li>
             @endforeach
         </ul>
@@ -67,7 +70,7 @@
                 </div>
             </div>
             @foreach ($categoriesToShow as $key => $categoryName)
-            <div class="tab-pane fade @if($id == strtolower($categoryName)) show active @endif" id="{{ strtolower($categoryName) }}" role="tabpanel" aria-labelledby="{{ strtolower($categoryName) }}-tab">
+            <div class="tab-pane fade @if($id == strtolower($categoryName)) show active @endif" id="{{ Str::slug($categoryName, '-') }}" role="tabpanel" aria-labelledby="{{ Str::slug($categoryName, '-') }}-tab">
                 <br>
                 @if($id == strtolower($categoryName))
                 <div class="row justify-content-center">            
