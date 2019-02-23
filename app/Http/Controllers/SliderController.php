@@ -41,12 +41,11 @@ class SliderController extends Controller
     public function store(StoreImageRequest $request) 
     {
         $file = $request->file('image');
-        $fileName = time().'_'.$file->getClientOriginalName();
-
-        $file->move(public_path().config('constants.sliderImages'), $fileName);
         
-        SliderImage::storeRecord($fileName, $request->get('text'));
+        $fileName = SliderImage::resize(912, 543, $file);
 
+        SliderImage::storeRecord($fileName, $request->get('text'));
+        
         Session::flash("message", "Imagen subida exitosamente");
         return redirect()->route('slider.index');
     }

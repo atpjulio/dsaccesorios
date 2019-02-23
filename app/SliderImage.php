@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Intervention\Image\Facades\Image;
 
 class SliderImage extends Model
 {
@@ -31,6 +32,14 @@ class SliderImage extends Model
     	$sliderImage->url = config('constants.sliderImages').$fileName;
     	$sliderImage->text = $text;
     	$sliderImage->status = config('constants.status.active');
+
+        $last = $this->latest('position')
+            ->first();
+
+        $sliderImage->position = 1;
+        if ($last) {
+            $sliderImage->position = $last->position + 1;
+        }
 
     	$sliderImage->save();
 
@@ -76,4 +85,16 @@ class SliderImage extends Model
         return $sliderImage;
     }
 
+    protected function resize($width, $height, $file)
+	{
+		$image = Image::make($file);
+		$image->fit($width, $height);
+
+        $fileName = time().'_'.$file->getClientOriginalName();
+
+        $image->save(public_path().config('constants.sliderImages').$fileName);
+
+        return $fileName;
+	}
+    
 }
