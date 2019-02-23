@@ -13,6 +13,17 @@ use App\Utilities;
 |
 */
 
+Route::get('payu', function () {
+		// \App\Payu::sendPayment();
+		return view('tests.payu');
+});
+Route::get('payu-confirmation', function () {
+		return view('tests.payu-confirmation');
+});
+Route::get('payu-response', function () {
+		return view('tests.payu-response');
+});
+
 Route::view('/work', 'work')->name('work');
 Route::view('/contactus', 'contactus')->name('contactus');
 Route::view('/who-are-we', 'who-are-we')->name('who.are.we');

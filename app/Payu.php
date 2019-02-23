@@ -6,8 +6,39 @@ use Illuminate\Database\Eloquent\Model;
 
 class Payu extends Model
 {
-    protected function sendPayment($data)
+    protected function sendPayment($data = null)
     {
+        $apiUrl = "https://sandbox.checkout.payulatam.com/ppp-web-gateway-payu/";
+
+        try {
+            $client = new \GuzzleHttp\Client();
+            $res = $client->post(
+                $apiUrl,
+                [
+                    'form_params' => [
+                        "merchantId"    => "508029",
+                        "ApiKey"        => "4Vj8eK4rloUd272L48hsrarnUA",
+                        "accountId"     => "512321",
+                        "description"   => "Test PAYU" ,
+                        "referenceCode" => "TestPayU",
+                        "amount"        => "20000"  ,
+                        "tax"           => "3193" ,
+                        "taxReturnBase" => "16806",
+                        "currency"      => "COP",
+                        "signature"     => "7ee7cf808ce6a39b17481c54f2c57acc",
+                        "test"          => "1",
+                        "buyerEmail"    => "test@test.com",
+                        "responseUrl"   => "http://www.test.com/response",
+                        "confirmationUrl" => "http://www.test.com/confirmation",
+                    ]
+                ]
+            );
+
+            dd($res->getBody()->getContents());
+        } catch (\GuzzleHttp\Exception\ClientException $e) {
+            dd("error", $e);
+        }
+        
     	/*
 		DATA EXAMPLE:
 		merchantId: 508029
