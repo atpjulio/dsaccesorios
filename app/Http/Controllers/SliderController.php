@@ -42,10 +42,14 @@ class SliderController extends Controller
     {
         $file = $request->file('image');
         
-        $fileName = SliderImage::resize(912, 543, $file);
+        $fileName = SliderImage::resize(
+            config('constants.image.slider.width'), 
+            config('constants.image.slider.height'), 
+            $file
+        );
 
         SliderImage::storeRecord($fileName, $request->get('text'));
-        
+
         Session::flash("message", "Imagen subida exitosamente");
         return redirect()->route('slider.index');
     }

@@ -5,6 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 use Illuminate\Support\Facades\Storage;
+use Intervention\Image\Facades\Image;
 
 class Product extends Model
 {
@@ -55,8 +56,11 @@ class Product extends Model
 
         if ($request->hasFile('picture')) {
             $file = $request->file('picture');
-            $fileName = time().'_'.$file->getClientOriginalName();
-            $product->picture = Storage::put(config('constants.productImage'), $file);
+            $product->picture = $this->resize(
+                config('constants.image.product.width'), 
+                config('constants.image.product.height'), 
+                $file
+            );
         }
 
         $product->save();
@@ -84,11 +88,13 @@ class Product extends Model
 
         if ($request->hasFile('picture')) {
             $file = $request->file('picture');
-            $fileName = time().'_'.$file->getClientOriginalName();
-
             Storage::delete($oldImage);
 
-            $product->picture = Storage::put(config('constants.productImage'), $file);
+            $product->picture = $this->resize(
+                config('constants.image.product.width'), 
+                config('constants.image.product.height'), 
+                $file
+            );
         }
 
         $product->save();
@@ -140,4 +146,21 @@ class Product extends Model
             ->paginate(config('constants.pagination'));
     }
 
+    protected function resize($width, $height, $file)
+	{
+		$image = Image::make($file);
+		$image->fit($width, $height);
+
+        $fileName = config('constants.productImages').time().'_'.$file->getClientOriginalName();
+        Storage::put($fileName, $image->encode());
+
+        return $fileName;
+	}
+
+    protected function deleteRecord($product)
+    {
+        Storage::delete($product->picture);
+
+        $product->delete();        
+    }
 }

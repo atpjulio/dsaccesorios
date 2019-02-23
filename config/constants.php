@@ -1,6 +1,16 @@
 <?php
 
 $myConstants = [
+    'image' => [
+        'product' => [
+            'width' => 466,
+            'height' => 438
+        ],
+        'slider' => [
+            'width' => 912,
+            'height' => 543
+        ],
+    ],
     'noYes' => [
         0 => 'No',
         1 => 'Si',

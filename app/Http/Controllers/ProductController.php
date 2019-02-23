@@ -122,7 +122,7 @@ class ProductController extends Controller
             if (!$product) {
                 Session::flash('message_warning', 'Ups! Parece que el producto ya ha sido eliminado');
             } else {
-                $product->delete();
+                Product::deleteRecord($product);
                 Session::flash('message', 'Producto eliminado exitosamente');
             }
 
